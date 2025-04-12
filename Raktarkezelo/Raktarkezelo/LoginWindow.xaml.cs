@@ -24,13 +24,15 @@ namespace Raktarkezelo
     {
         public LogData InputText { get; set; } = new LogData();
         public ObservableCollection<LogData> Users { get; set; }
+        public bool IsNew { get; set; }
         public string RaktarName { get; set; }
         public bool IsUser { get; set; }
-        public string BejelentkezesSzoveg => $"Bejelentkezés a\n{RaktarName}ba";
-        public LoginWindow(string raktarName)
+        public string BejelentkezesSzoveg => IsNew ? "Bejelentkezés" : $"Bejelentkezés a\n{RaktarName}ba";
+        public LoginWindow(string raktarName, bool isNew)
         {
             InitializeComponent();
             this.RaktarName = raktarName;
+            this.IsNew = isNew;
             this.DataContext = this;
             FileRead();
         }
@@ -53,7 +55,15 @@ namespace Raktarkezelo
         {
             if (InputCheck(InputText))
             {
-                LogData user = Users.FirstOrDefault(x => x.felhasznalonev == InputText.felhasznalonev && x.jelszo == InputText.jelszo && x.raktar == RaktarName);
+                LogData user = new LogData();
+                if (IsNew)
+                {
+                    user = Users.FirstOrDefault(x => x.felhasznalonev == InputText.felhasznalonev && x.jelszo == InputText.jelszo);
+                }
+                else if (!IsNew)
+                {
+                    user = Users.FirstOrDefault(x => x.felhasznalonev == InputText.felhasznalonev && x.jelszo == InputText.jelszo && x.raktar == RaktarName);
+                }
                 if (user == null)
                 {
                     MessageBox.Show("Hibás felhasználónév vagy jelszó vagy nincs jogosultsága ebbe a raktárba belépni!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);

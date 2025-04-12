@@ -1,0 +1,42 @@
+﻿<Window x:Class="Raktarkezelo.AddRaktarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Raktarkezelo"
+        mc:Ignorable="d"
+        Title="AddRaktarWindow" Height="350" Width="280" FontSize="18" Background="Gray">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.9*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="1.8*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="LightGray"/>
+            </Style>
+        </Grid.Resources>
+        <Label Content="Új raktár hozzáadása" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" FontWeight="Bold"></Label>
+        <StackPanel Grid.Row="1">
+            <Label Content="Raktár neve:"></Label>
+            <TextBox FontSize="16" Foreground="Black" Width="230" Text="{Binding RaktarName}"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label Content="Termék(ek):"></Label>
+            <TextBox Text="{Binding FileLocation}" Width="230" IsReadOnly="True" Margin="0,0,0,10"/>
+            <Button Content="Fájl kiválasztása" Width="150" Click="SelectFile_Click" Height="30"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom">
+            <Button Content="Vissza" Width="70" Height="35" Margin="10 0 60 0" x:Name="cancel_BTN" Click="cancel_BTN_Click"></Button>
+            <Button Content="Hozzáadás" Width="100" Height="35" x:Name="add_BTN" Click="add_BTN_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>
