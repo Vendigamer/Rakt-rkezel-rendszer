@@ -19,29 +19,32 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Termék neve:"></Label>
-                    <TextBox x:Name="filter_TXB" Width="200" Height="30" VerticalAlignment="Center" Margin="0,0,10,0"></TextBox>
+                    <TextBox Width="200" Height="25" VerticalAlignment="Center" Margin="0,0,10,0" Text="{Binding SearchInput.InputName}"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Label Content="Cikkszám:" Margin="17,0,0,0"></Label>
+                    <TextBox Width="200" Height="25" VerticalAlignment="Center" Margin="0,0,10,0" Text="{Binding SearchInput.InputCikkszam}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Label Content="Raktár:" Margin="32,0,0,0"></Label>
-                    <ComboBox x:Name="filter_CBX" Width="200" Height="30" VerticalAlignment="Center" Margin="0,0,10,0"></ComboBox>
+                    <ComboBox Width="200" Height="25" VerticalAlignment="Center" Margin="0,0,10,0" ItemsSource="{Binding Raktarak}" SelectedItem="{Binding SearchInput.InputRaktar}"></ComboBox>
                 </StackPanel>
             </StackPanel>
-            <Button Content="Szűrés" x:Name="filter_BTN" Width="100" Height="25" VerticalAlignment="Center"></Button>
+            <Button Content="Szűrés" x:Name="filter_BTN" Width="100" Height="25" VerticalAlignment="Center" Click="filter_BTN_Click"></Button>
         </StackPanel>
         <GroupBox Header="Termékek" Grid.Row="1" Width="450">
-            <DataGrid Margin="10">
+            <DataGrid Margin="10" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding FilteredProducts}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Termék neve" Width="*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Mennyiség" Width="Auto"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Cikkszám" Width="Auto"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Státusz" Width="*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Raktár" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Termék neve" Width="*" Binding="{Binding nev}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Mennyiség" Width="Auto" Binding="{Binding darabszam}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cikkszám" Width="Auto" Binding="{Binding cikkszam}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Raktár" Width="*" Binding="{Binding raktar}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
         <Label Content="Raktár" Grid.Column="1" FontSize="30" FontWeight="Bold" Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
-        <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="200" Height="30" Margin="0,20,0,0"></ComboBox>
-        <Button Content="Belépés" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="150" Height="30" Margin="0,80,0,0"></Button>
+        <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="200" Height="25" Margin="0,20,0,0" SelectedItem="{Binding RaktarName}" ItemsSource="{Binding Raktarak}"></ComboBox>
+        <Button Content="Belépés" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="150" Height="30" Margin="0,80,0,0" x:Name="mainLogin_BTN" Click="mainLogin_BTN_Click"></Button>
         <Button Content="Raktár hozzáadása" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,20"></Button>
         <Button Content="Adatok megjelenítése" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,70"></Button>
     </Grid>

@@ -1,0 +1,802 @@
+[
+  {
+    "nev": "Kalapács 14-es",
+    "cikkszam": "PRD-1001",
+    "darabszam": 39,
+    "raktar": "Eger Raktár",
+    "sor": 4,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs mini",
+    "cikkszam": "PRD-1002",
+    "darabszam": 78,
+    "raktar": "Nyíregyháza Raktár",
+    "sor": 5,
+    "polc": 3
+  },
+  {
+    "nev": "Fűrész extra",
+    "cikkszam": "PRD-1003",
+    "darabszam": 93,
+    "raktar": "Debrecen Raktár",
+    "sor": 8,
+    "polc": 1
+  },
+  {
+    "nev": "Akkumulátor ipari",
+    "cikkszam": "PRD-1004",
+    "darabszam": 40,
+    "raktar": "Debrecen Raktár",
+    "sor": 9,
+    "polc": 4
+  },
+  {
+    "nev": "Akkumulátor extra",
+    "cikkszam": "PRD-1005",
+    "darabszam": 60,
+    "raktar": "Szeged Raktár",
+    "sor": 9,
+    "polc": 1
+  },
+  {
+    "nev": "Villáskulcs kicsi",
+    "cikkszam": "PRD-1006",
+    "darabszam": 57,
+    "raktar": "Nyíregyháza Raktár",
+    "sor": 5,
+    "polc": 2
+  },
+  {
+    "nev": "Fűrész standard",
+    "cikkszam": "PRD-1007",
+    "darabszam": 93,
+    "raktar": "Szeged Raktár",
+    "sor": 8,
+    "polc": 1
+  },
+  {
+    "nev": "Kalapács standard",
+    "cikkszam": "PRD-1008",
+    "darabszam": 61,
+    "raktar": "Szeged Raktár",
+    "sor": 3,
+    "polc": 5
+  },
+  {
+    "nev": "Lánc standard",
+    "cikkszam": "PRD-1009",
+    "darabszam": 70,
+    "raktar": "Budapest Raktár",
+    "sor": 1,
+    "polc": 4
+  },
+  {
+    "nev": "Akkumulátor 8mm",
+    "cikkszam": "PRD-1010",
+    "darabszam": 13,
+    "raktar": "Miskolc Raktár",
+    "sor": 6,
+    "polc": 3
+  },
+  {
+    "nev": "Akkumulátor kicsi",
+    "cikkszam": "PRD-1011",
+    "darabszam": 53,
+    "raktar": "Budapest Raktár",
+    "sor": 5,
+    "polc": 5
+  },
+  {
+    "nev": "Csavar maxi",
+    "cikkszam": "PRD-1012",
+    "darabszam": 64,
+    "raktar": "Nyíregyháza Raktár",
+    "sor": 6,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs maxi",
+    "cikkszam": "PRD-1013",
+    "darabszam": 87,
+    "raktar": "Pécs Raktár",
+    "sor": 9,
+    "polc": 2
+  },
+  {
+    "nev": "Olaj kicsi",
+    "cikkszam": "PRD-1014",
+    "darabszam": 49,
+    "raktar": "Miskolc Raktár",
+    "sor": 7,
+    "polc": 4
+  },
+  {
+    "nev": "Olaj 12mm",
+    "cikkszam": "PRD-1015",
+    "darabszam": 82,
+    "raktar": "Pécs Raktár",
+    "sor": 5,
+    "polc": 3
+  },
+  {
+    "nev": "Csavar ipari",
+    "cikkszam": "PRD-1016",
+    "darabszam": 16,
+    "raktar": "Eger Raktár",
+    "sor": 1,
+    "polc": 1
+  },
+  {
+    "nev": "Olaj ipari",
+    "cikkszam": "PRD-1017",
+    "darabszam": 89,
+    "raktar": "Győr Raktár",
+    "sor": 6,
+    "polc": 1
+  },
+  {
+    "nev": "Fúrószár maxi",
+    "cikkszam": "PRD-1018",
+    "darabszam": 95,
+    "raktar": "Debrecen Raktár",
+    "sor": 5,
+    "polc": 3
+  },
+  {
+    "nev": "Lánc standard",
+    "cikkszam": "PRD-1019",
+    "darabszam": 24,
+    "raktar": "Eger Raktár",
+    "sor": 5,
+    "polc": 2
+  },
+  {
+    "nev": "Lánc maxi",
+    "cikkszam": "PRD-1020",
+    "darabszam": 30,
+    "raktar": "Debrecen Raktár",
+    "sor": 8,
+    "polc": 3
+  },
+  {
+    "nev": "Fűrész 14-es",
+    "cikkszam": "PRD-1021",
+    "darabszam": 39,
+    "raktar": "Kecskemét Raktár",
+    "sor": 8,
+    "polc": 1
+  },
+  {
+    "nev": "Kalapács maxi",
+    "cikkszam": "PRD-1022",
+    "darabszam": 75,
+    "raktar": "Pécs Raktár",
+    "sor": 5,
+    "polc": 5
+  },
+  {
+    "nev": "Csőkulcs 14-es",
+    "cikkszam": "PRD-1023",
+    "darabszam": 56,
+    "raktar": "Miskolc Raktár",
+    "sor": 1,
+    "polc": 4
+  },
+  {
+    "nev": "Akkumulátor maxi",
+    "cikkszam": "PRD-1024",
+    "darabszam": 74,
+    "raktar": "Budapest Raktár",
+    "sor": 7,
+    "polc": 4
+  },
+  {
+    "nev": "Csőkulcs extra",
+    "cikkszam": "PRD-1025",
+    "darabszam": 41,
+    "raktar": "Miskolc Raktár",
+    "sor": 4,
+    "polc": 4
+  },
+  {
+    "nev": "Kalapács 8mm",
+    "cikkszam": "PRD-1026",
+    "darabszam": 35,
+    "raktar": "Kecskemét Raktár",
+    "sor": 3,
+    "polc": 4
+  },
+  {
+    "nev": "Csőkulcs nagy",
+    "cikkszam": "PRD-1027",
+    "darabszam": 9,
+    "raktar": "Debrecen Raktár",
+    "sor": 3,
+    "polc": 3
+  },
+  {
+    "nev": "Olaj ipari",
+    "cikkszam": "PRD-1028",
+    "darabszam": 99,
+    "raktar": "Miskolc Raktár",
+    "sor": 6,
+    "polc": 5
+  },
+  {
+    "nev": "Akkumulátor 14-es",
+    "cikkszam": "PRD-1029",
+    "darabszam": 83,
+    "raktar": "Kecskemét Raktár",
+    "sor": 10,
+    "polc": 3
+  },
+  {
+    "nev": "Kábel 14-es",
+    "cikkszam": "PRD-1030",
+    "darabszam": 7,
+    "raktar": "Nyíregyháza Raktár",
+    "sor": 3,
+    "polc": 5
+  },
+  {
+    "nev": "Olaj 12mm",
+    "cikkszam": "PRD-1031",
+    "darabszam": 38,
+    "raktar": "Debrecen Raktár",
+    "sor": 5,
+    "polc": 1
+  },
+  {
+    "nev": "Villáskulcs kicsi",
+    "cikkszam": "PRD-1032",
+    "darabszam": 24,
+    "raktar": "Győr Raktár",
+    "sor": 10,
+    "polc": 1
+  },
+  {
+    "nev": "Lánc mini",
+    "cikkszam": "PRD-1033",
+    "darabszam": 20,
+    "raktar": "Eger Raktár",
+    "sor": 7,
+    "polc": 4
+  },
+  {
+    "nev": "Fúrószár kicsi",
+    "cikkszam": "PRD-1034",
+    "darabszam": 69,
+    "raktar": "Eger Raktár",
+    "sor": 2,
+    "polc": 1
+  },
+  {
+    "nev": "Olaj ipari",
+    "cikkszam": "PRD-1035",
+    "darabszam": 25,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 2,
+    "polc": 4
+  },
+  {
+    "nev": "Fúrószár standard",
+    "cikkszam": "PRD-1036",
+    "darabszam": 66,
+    "raktar": "Nyíregyháza Raktár",
+    "sor": 7,
+    "polc": 5
+  },
+  {
+    "nev": "Villáskulcs 12mm",
+    "cikkszam": "PRD-1037",
+    "darabszam": 27,
+    "raktar": "Miskolc Raktár",
+    "sor": 5,
+    "polc": 3
+  },
+  {
+    "nev": "Fúrószár nagy",
+    "cikkszam": "PRD-1038",
+    "darabszam": 83,
+    "raktar": "Budapest Raktár",
+    "sor": 2,
+    "polc": 1
+  },
+  {
+    "nev": "Csőkulcs 12mm",
+    "cikkszam": "PRD-1039",
+    "darabszam": 19,
+    "raktar": "Kecskemét Raktár",
+    "sor": 1,
+    "polc": 1
+  },
+  {
+    "nev": "Csavar 14-es",
+    "cikkszam": "PRD-1040",
+    "darabszam": 22,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 9,
+    "polc": 5
+  },
+  {
+    "nev": "Kábel mini",
+    "cikkszam": "PRD-1041",
+    "darabszam": 49,
+    "raktar": "Pécs Raktár",
+    "sor": 10,
+    "polc": 1
+  },
+  {
+    "nev": "Fúrószár kicsi",
+    "cikkszam": "PRD-1042",
+    "darabszam": 15,
+    "raktar": "Pécs Raktár",
+    "sor": 5,
+    "polc": 3
+  },
+  {
+    "nev": "Kábel 14-es",
+    "cikkszam": "PRD-1043",
+    "darabszam": 63,
+    "raktar": "Győr Raktár",
+    "sor": 3,
+    "polc": 3
+  },
+  {
+    "nev": "Villáskulcs standard",
+    "cikkszam": "PRD-1044",
+    "darabszam": 67,
+    "raktar": "Eger Raktár",
+    "sor": 4,
+    "polc": 5
+  },
+  {
+    "nev": "Csavar standard",
+    "cikkszam": "PRD-1045",
+    "darabszam": 85,
+    "raktar": "Debrecen Raktár",
+    "sor": 9,
+    "polc": 2
+  },
+  {
+    "nev": "Fúrószár maxi",
+    "cikkszam": "PRD-1046",
+    "darabszam": 91,
+    "raktar": "Budapest Raktár",
+    "sor": 1,
+    "polc": 3
+  },
+  {
+    "nev": "Fűrész 8mm",
+    "cikkszam": "PRD-1047",
+    "darabszam": 7,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 5,
+    "polc": 5
+  },
+  {
+    "nev": "Akkumulátor maxi",
+    "cikkszam": "PRD-1048",
+    "darabszam": 11,
+    "raktar": "Eger Raktár",
+    "sor": 1,
+    "polc": 1
+  },
+  {
+    "nev": "Kalapács nagy",
+    "cikkszam": "PRD-1049",
+    "darabszam": 51,
+    "raktar": "Nyíregyháza Raktár",
+    "sor": 2,
+    "polc": 2
+  },
+  {
+    "nev": "Villáskulcs ipari",
+    "cikkszam": "PRD-1050",
+    "darabszam": 81,
+    "raktar": "Miskolc Raktár",
+    "sor": 9,
+    "polc": 3
+  },
+  {
+    "nev": "Villáskulcs 14-es",
+    "cikkszam": "PRD-1051",
+    "darabszam": 40,
+    "raktar": "Kecskemét Raktár",
+    "sor": 5,
+    "polc": 5
+  },
+  {
+    "nev": "Akkumulátor nagy",
+    "cikkszam": "PRD-1052",
+    "darabszam": 34,
+    "raktar": "Pécs Raktár",
+    "sor": 2,
+    "polc": 2
+  },
+  {
+    "nev": "Fúrószár standard",
+    "cikkszam": "PRD-1053",
+    "darabszam": 65,
+    "raktar": "Debrecen Raktár",
+    "sor": 2,
+    "polc": 5
+  },
+  {
+    "nev": "Villáskulcs standard",
+    "cikkszam": "PRD-1054",
+    "darabszam": 45,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 5,
+    "polc": 4
+  },
+  {
+    "nev": "Lánc mini",
+    "cikkszam": "PRD-1055",
+    "darabszam": 44,
+    "raktar": "Pécs Raktár",
+    "sor": 3,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs kicsi",
+    "cikkszam": "PRD-1056",
+    "darabszam": 35,
+    "raktar": "Győr Raktár",
+    "sor": 9,
+    "polc": 3
+  },
+  {
+    "nev": "Fúrószár kicsi",
+    "cikkszam": "PRD-1057",
+    "darabszam": 69,
+    "raktar": "Kecskemét Raktár",
+    "sor": 5,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs ipari",
+    "cikkszam": "PRD-1058",
+    "darabszam": 47,
+    "raktar": "Szeged Raktár",
+    "sor": 1,
+    "polc": 1
+  },
+  {
+    "nev": "Csőkulcs maxi",
+    "cikkszam": "PRD-1059",
+    "darabszam": 89,
+    "raktar": "Szeged Raktár",
+    "sor": 2,
+    "polc": 4
+  },
+  {
+    "nev": "Kábel ipari",
+    "cikkszam": "PRD-1060",
+    "darabszam": 89,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 9,
+    "polc": 1
+  },
+  {
+    "nev": "Akkumulátor standard",
+    "cikkszam": "PRD-1061",
+    "darabszam": 32,
+    "raktar": "Eger Raktár",
+    "sor": 7,
+    "polc": 4
+  },
+  {
+    "nev": "Fúrószár 14-es",
+    "cikkszam": "PRD-1062",
+    "darabszam": 77,
+    "raktar": "Budapest Raktár",
+    "sor": 7,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs 8mm",
+    "cikkszam": "PRD-1063",
+    "darabszam": 79,
+    "raktar": "Pécs Raktár",
+    "sor": 4,
+    "polc": 3
+  },
+  {
+    "nev": "Lánc extra",
+    "cikkszam": "PRD-1064",
+    "darabszam": 39,
+    "raktar": "Győr Raktár",
+    "sor": 8,
+    "polc": 1
+  },
+  {
+    "nev": "Fűrész ipari",
+    "cikkszam": "PRD-1065",
+    "darabszam": 80,
+    "raktar": "Pécs Raktár",
+    "sor": 8,
+    "polc": 3
+  },
+  {
+    "nev": "Fűrész 8mm",
+    "cikkszam": "PRD-1066",
+    "darabszam": 17,
+    "raktar": "Miskolc Raktár",
+    "sor": 10,
+    "polc": 2
+  },
+  {
+    "nev": "Akkumulátor kicsi",
+    "cikkszam": "PRD-1067",
+    "darabszam": 77,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 9,
+    "polc": 4
+  },
+  {
+    "nev": "Lánc standard",
+    "cikkszam": "PRD-1068",
+    "darabszam": 37,
+    "raktar": "Miskolc Raktár",
+    "sor": 9,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs nagy",
+    "cikkszam": "PRD-1069",
+    "darabszam": 9,
+    "raktar": "Nyíregyháza Raktár",
+    "sor": 2,
+    "polc": 5
+  },
+  {
+    "nev": "Kábel maxi",
+    "cikkszam": "PRD-1070",
+    "darabszam": 54,
+    "raktar": "Győr Raktár",
+    "sor": 3,
+    "polc": 1
+  },
+  {
+    "nev": "Csőkulcs 12mm",
+    "cikkszam": "PRD-1071",
+    "darabszam": 2,
+    "raktar": "Eger Raktár",
+    "sor": 2,
+    "polc": 1
+  },
+  {
+    "nev": "Kalapács kicsi",
+    "cikkszam": "PRD-1072",
+    "darabszam": 61,
+    "raktar": "Budapest Raktár",
+    "sor": 2,
+    "polc": 4
+  },
+  {
+    "nev": "Lánc 14-es",
+    "cikkszam": "PRD-1073",
+    "darabszam": 57,
+    "raktar": "Kecskemét Raktár",
+    "sor": 10,
+    "polc": 3
+  },
+  {
+    "nev": "Villáskulcs 8mm",
+    "cikkszam": "PRD-1074",
+    "darabszam": 18,
+    "raktar": "Pécs Raktár",
+    "sor": 8,
+    "polc": 1
+  },
+  {
+    "nev": "Fűrész 12mm",
+    "cikkszam": "PRD-1075",
+    "darabszam": 34,
+    "raktar": "Budapest Raktár",
+    "sor": 6,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs 12mm",
+    "cikkszam": "PRD-1076",
+    "darabszam": 11,
+    "raktar": "Szeged Raktár",
+    "sor": 5,
+    "polc": 3
+  },
+  {
+    "nev": "Kábel mini",
+    "cikkszam": "PRD-1077",
+    "darabszam": 88,
+    "raktar": "Debrecen Raktár",
+    "sor": 9,
+    "polc": 3
+  },
+  {
+    "nev": "Kábel standard",
+    "cikkszam": "PRD-1078",
+    "darabszam": 48,
+    "raktar": "Budapest Raktár",
+    "sor": 8,
+    "polc": 5
+  },
+  {
+    "nev": "Villáskulcs extra",
+    "cikkszam": "PRD-1079",
+    "darabszam": 24,
+    "raktar": "Budapest Raktár",
+    "sor": 4,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs extra",
+    "cikkszam": "PRD-1080",
+    "darabszam": 11,
+    "raktar": "Debrecen Raktár",
+    "sor": 2,
+    "polc": 5
+  },
+  {
+    "nev": "Csőkulcs nagy",
+    "cikkszam": "PRD-1081",
+    "darabszam": 74,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 1,
+    "polc": 5
+  },
+  {
+    "nev": "Kalapács standard",
+    "cikkszam": "PRD-1082",
+    "darabszam": 96,
+    "raktar": "Eger Raktár",
+    "sor": 4,
+    "polc": 1
+  },
+  {
+    "nev": "Kalapács ipari",
+    "cikkszam": "PRD-1083",
+    "darabszam": 73,
+    "raktar": "Kecskemét Raktár",
+    "sor": 4,
+    "polc": 3
+  },
+  {
+    "nev": "Fúrószár 8mm",
+    "cikkszam": "PRD-1084",
+    "darabszam": 61,
+    "raktar": "Budapest Raktár",
+    "sor": 6,
+    "polc": 4
+  },
+  {
+    "nev": "Kalapács 12mm",
+    "cikkszam": "PRD-1085",
+    "darabszam": 49,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 9,
+    "polc": 1
+  },
+  {
+    "nev": "Fűrész mini",
+    "cikkszam": "PRD-1086",
+    "darabszam": 40,
+    "raktar": "Pécs Raktár",
+    "sor": 1,
+    "polc": 3
+  },
+  {
+    "nev": "Csavar mini",
+    "cikkszam": "PRD-1087",
+    "darabszam": 71,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 4,
+    "polc": 5
+  },
+  {
+    "nev": "Akkumulátor 12mm",
+    "cikkszam": "PRD-1088",
+    "darabszam": 63,
+    "raktar": "Szeged Raktár",
+    "sor": 10,
+    "polc": 3
+  },
+  {
+    "nev": "Csavar ipari",
+    "cikkszam": "PRD-1089",
+    "darabszam": 24,
+    "raktar": "Szeged Raktár",
+    "sor": 6,
+    "polc": 2
+  },
+  {
+    "nev": "Kábel 14-es",
+    "cikkszam": "PRD-1090",
+    "darabszam": 9,
+    "raktar": "Eger Raktár",
+    "sor": 7,
+    "polc": 3
+  },
+  {
+    "nev": "Lánc maxi",
+    "cikkszam": "PRD-1091",
+    "darabszam": 49,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 8,
+    "polc": 2
+  },
+  {
+    "nev": "Csavar nagy",
+    "cikkszam": "PRD-1092",
+    "darabszam": 85,
+    "raktar": "Miskolc Raktár",
+    "sor": 1,
+    "polc": 5
+  },
+  {
+    "nev": "Kábel nagy",
+    "cikkszam": "PRD-1093",
+    "darabszam": 27,
+    "raktar": "Eger Raktár",
+    "sor": 1,
+    "polc": 5
+  },
+  {
+    "nev": "Csőkulcs 14-es",
+    "cikkszam": "PRD-1094",
+    "darabszam": 32,
+    "raktar": "Debrecen Raktár",
+    "sor": 5,
+    "polc": 2
+  },
+  {
+    "nev": "Lánc extra",
+    "cikkszam": "PRD-1095",
+    "darabszam": 4,
+    "raktar": "Debrecen Raktár",
+    "sor": 1,
+    "polc": 2
+  },
+  {
+    "nev": "Olaj 14-es",
+    "cikkszam": "PRD-1096",
+    "darabszam": 15,
+    "raktar": "Székesfehérvár Raktár",
+    "sor": 7,
+    "polc": 2
+  },
+  {
+    "nev": "Csőkulcs kicsi",
+    "cikkszam": "PRD-1097",
+    "darabszam": 24,
+    "raktar": "Eger Raktár",
+    "sor": 10,
+    "polc": 3
+  },
+  {
+    "nev": "Kalapács kicsi",
+    "cikkszam": "PRD-1098",
+    "darabszam": 30,
+    "raktar": "Kecskemét Raktár",
+    "sor": 1,
+    "polc": 5
+  },
+  {
+    "nev": "Csavar 8mm",
+    "cikkszam": "PRD-1099",
+    "darabszam": 11,
+    "raktar": "Pécs Raktár",
+    "sor": 7,
+    "polc": 3
+  },
+  {
+    "nev": "Villáskulcs ipari",
+    "cikkszam": "PRD-1100",
+    "darabszam": 94,
+    "raktar": "Szeged Raktár",
+    "sor": 2,
+    "polc": 2
+  }
+]
