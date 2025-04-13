@@ -28,13 +28,11 @@ namespace Raktarkezelo
         public ObservableCollection<ProdData> Products { get; set; }
         public string RaktarName { get; set; }
         private string fileLocation;
-
         public string FileLocation
         {
             get { return fileLocation; }
             set { fileLocation = value; OnPropertyChanged(nameof(FileLocation)); }
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string tulajdonsagNev)
         {

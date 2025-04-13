@@ -3,6 +3,3 @@ Termékek hozzáadása, módosítása, törlése
 Jogosultságok beállítása
 Készletmozgatás
 Raktár törlése
-
-admin aki mindenhez hozzá fér
-Készletfigyelmeztetés

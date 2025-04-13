@@ -49,8 +49,6 @@ namespace Raktarkezelo
             get => !IsUser;
             set { IsUser = !value; }
         }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string tulajdonsagNev)
         {
@@ -97,6 +95,11 @@ namespace Raktarkezelo
             if (string.IsNullOrEmpty(user.jelszo))
             {
                 MessageBox.Show("Kérlek add meg a jelszót!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            if (user.raktar == null || user.raktar == "")
+            {
+                MessageBox.Show("Kérlek add meg a raktárat!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (Users.Any(x => x.felhasznalonev == user.felhasznalonev && x.raktar == user.raktar))
