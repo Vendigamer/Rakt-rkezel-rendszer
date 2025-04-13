@@ -22,7 +22,14 @@ namespace Raktarkezelo
     public partial class NewProfileWindow : Window, INotifyPropertyChanged
     {
         public ObservableCollection<string> Raktarak { get; set; }
-        public LogData NewUser { get; set; } = new LogData();
+        public ObservableCollection<LogData> Users { get; set; }
+        public LogData NewUser { get; set; } = new()
+        {
+            felhasznalonev = "",
+            jelszo = "",
+            raktar = "",
+            isUser = true
+        };
         private bool isUser;
         public bool IsUser
         {
@@ -49,11 +56,12 @@ namespace Raktarkezelo
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(tulajdonsagNev));
         }
-        public NewProfileWindow(ObservableCollection<string> raktarak)
+        public NewProfileWindow(ObservableCollection<string> raktarak, ObservableCollection<LogData> users)
         {
             InitializeComponent();
             this.DataContext = this;
             this.Raktarak = raktarak;
+            this.Users = users;
         }
 
         private void cancel_BTN_Click(object sender, RoutedEventArgs e)
@@ -74,12 +82,7 @@ namespace Raktarkezelo
         {
             if (InputCheck(NewUser))
             {
-                LogData newUser = new()
-                {
-                    felhasznalonev = NewUser.felhasznalonev,
-                    raktar = NewUser.raktar,
-                    isUser = IsUser ? true : false
-                };
+                NewUser.isUser = this.IsUser;
                 this.DialogResult = true;
             }
         }
@@ -94,6 +97,11 @@ namespace Raktarkezelo
             if (string.IsNullOrEmpty(user.jelszo))
             {
                 MessageBox.Show("Kérlek add meg a jelszót!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            if (Users.Any(x => x.felhasznalonev == user.felhasznalonev && x.raktar == user.raktar))
+            {
+                MessageBox.Show("Ez a felhasználónév már létezik ilyen raktárral!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;

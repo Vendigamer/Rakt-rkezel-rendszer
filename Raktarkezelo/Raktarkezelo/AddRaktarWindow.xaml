@@ -31,7 +31,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Termék(ek):"></Label>
-            <TextBox Text="{Binding FileLocation}" Width="230" IsReadOnly="True" Margin="0,0,0,10"/>
+            <TextBox Text="{Binding FileLocation}" Width="230" IsReadOnly="True" Margin="0,0,0,10" FontSize="16"/>
             <Button Content="Fájl kiválasztása" Width="150" Click="SelectFile_Click" Height="30"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom">

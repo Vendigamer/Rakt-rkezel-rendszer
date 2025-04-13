@@ -1,0 +1,24 @@
+[
+  {
+    "cikkszam": "PRD-1001",
+    "darabszam": 10,
+    "honnan": "Eger Raktár",
+    "hova": "Győr Raktár",
+    "sor": 1,
+    "polc": 2,
+    "user": "kovacsadam",
+    "indul": "2025-04-11T10:00:00",
+    "erkezik": "2025-04-14T10:00:00"
+  },
+  {
+    "cikkszam": "PRD-1003",
+    "darabszam": 5,
+    "honnan": "Debrecen Raktár",
+    "hova": "Eger Raktár",
+    "sor": 3,
+    "polc": 1,
+    "user": "test",
+    "indul": "2025-04-05T08:30:00",
+    "erkezik": "2025-04-08T08:30:00"
+  }
+]

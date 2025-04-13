@@ -19,11 +19,11 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Termék neve:"></Label>
-                    <TextBox Width="200" Height="25" VerticalAlignment="Center" Margin="0,0,10,0" Text="{Binding SearchInput.InputName}"></TextBox>
+                    <TextBox Width="198" Height="25" VerticalAlignment="Center" Margin="0,0,10,0" Text="{Binding SearchInput.InputName}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Label Content="Cikkszám:" Margin="17,0,0,0"></Label>
-                    <TextBox Width="200" Height="25" VerticalAlignment="Center" Margin="0,0,10,0" Text="{Binding SearchInput.InputCikkszam}"></TextBox>
+                    <TextBox Width="198" Height="25" VerticalAlignment="Center" Margin="0,0,10,0" Text="{Binding SearchInput.InputCikkszam}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Label Content="Raktár:" Margin="32,0,0,0"></Label>
@@ -47,6 +47,6 @@
         <Button Content="Belépés" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="150" Height="30" Margin="0,80,0,0" x:Name="mainLogin_BTN" Click="mainLogin_BTN_Click"></Button>
         <Button Content="Raktár hozzáadása" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,20" x:Name="addRaktar_BTN" Click="addRaktar_BTN_Click"></Button>
         <Button Content="Új profil Létrehozása" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,70" x:Name="newProfile_BTN" Click="newProfile_BTN_Click"></Button>
-        <Button Content="Adatok megjelenítése" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,120"></Button>
+        <Button Content="Szállítási napló" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,120" x:Name="szallitasiNaplo_BTN" Click="szallitasiNaplo_BTN_Click"></Button>
     </Grid>
 </Window>

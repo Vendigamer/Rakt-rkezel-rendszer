@@ -25,6 +25,7 @@ namespace Raktarkezelo
     public partial class AddRaktarWindow : Window, INotifyPropertyChanged
     {
         public ObservableCollection<ProdData> NewProducts { get; set; }
+        public ObservableCollection<ProdData> Products { get; set; }
         public string RaktarName { get; set; }
         private string fileLocation;
 
@@ -40,10 +41,11 @@ namespace Raktarkezelo
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(tulajdonsagNev));
         }
 
-        public AddRaktarWindow()
+        public AddRaktarWindow(ObservableCollection<ProdData> products)
         {
             InitializeComponent();
             this.DataContext = this;
+            this.Products = products;
         }
 
         private void SelectFile_Click(object sender, RoutedEventArgs e)
@@ -84,6 +86,11 @@ namespace Raktarkezelo
             if (string.IsNullOrEmpty(FileLocation))
             {
                 MessageBox.Show("Kérlek add meg a termék(ek) fájljának a helyét!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            if (Products.Any(x => x.raktar.ToLower() == RaktarName.ToLower()))
+            {
+                MessageBox.Show("Ez a raktár már létezik!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;

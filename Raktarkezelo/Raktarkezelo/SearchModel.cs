@@ -11,5 +11,6 @@ namespace Raktarkezelo
         public string InputName { get; set; } = "";
         public string InputRaktar { get; set; } = "";
         public string InputCikkszam { get; set; } = "";
+        public string InputStatusz { get; set; } = "";
     }
 }

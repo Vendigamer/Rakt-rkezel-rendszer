@@ -31,7 +31,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Jelszó:"></Label>
-            <PasswordBox x:Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" Width="230" />
+            <PasswordBox x:Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" Width="230" FontSize="16" />
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom">
             <Button Content="Vissza" Width="70" Height="35" Margin="10 0 65 0" x:Name="cancel_BTN" Click="cancel_BTN_Click"></Button>

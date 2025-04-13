@@ -65,6 +65,7 @@ namespace Raktarkezelo
                 {
                     bool IsUser = loginWindow.IsUser;
                     MessageBox.Show("Sikeres bejelentkezés!", "Információ", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //IDE KELLENE A RAKTÁRBA VALÓ BELÉPÉS UTÁNI FUNKCIÓKAT BELETENNI
                 }
             }
             else
@@ -88,7 +89,7 @@ namespace Raktarkezelo
                 bool IsUser = loginWindow.IsUser;
                 if (!IsUser)
                 {
-                    AddRaktarWindow addRaktarWindow = new AddRaktarWindow();
+                    AddRaktarWindow addRaktarWindow = new AddRaktarWindow(Products);
                     addRaktarWindow.ShowDialog();
                     if (addRaktarWindow.DialogResult == true)
                     {
@@ -131,7 +132,7 @@ namespace Raktarkezelo
                 bool IsUser = loginWindow.IsUser;
                 if (!IsUser)
                 {
-                    NewProfileWindow newProfileWindow = new NewProfileWindow(Raktarak);
+                    NewProfileWindow newProfileWindow = new NewProfileWindow(Raktarak, loginWindow.Users);
                     newProfileWindow.ShowDialog();
                     if (newProfileWindow.DialogResult == true)
                     {
@@ -148,6 +149,12 @@ namespace Raktarkezelo
                     MessageBox.Show("Nincs jogosultságod új profilt létrehozni", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void szallitasiNaplo_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            DeliveryLogWindow deliveryLogWindow = new DeliveryLogWindow();
+            deliveryLogWindow.ShowDialog();
         }
     }
 }
