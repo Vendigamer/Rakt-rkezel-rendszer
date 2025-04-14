@@ -19,7 +19,7 @@ namespace Raktarkezelo
     /// <summary>
     /// Interaction logic for NewProfileWindow.xaml
     /// </summary>
-    public partial class NewProfileWindow : Window, INotifyPropertyChanged
+    public partial class NewProfileWindow : Window
     {
         public ObservableCollection<string> Raktarak { get; set; }
         public ObservableCollection<LogData> Users { get; set; }
@@ -30,30 +30,7 @@ namespace Raktarkezelo
             raktar = "",
             isUser = true
         };
-        private bool isUser;
-        public bool IsUser
-        {
-            get => isUser;
-            set
-            {
-                if (isUser != value)
-                {
-                    isUser = value;
-                    OnPropertyChanged(nameof(IsUser));
-                    OnPropertyChanged(nameof(IsAdmin));
-                }
-            }
-        }
-        public bool IsAdmin
-        {
-            get => !IsUser;
-            set { IsUser = !value; }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string tulajdonsagNev)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(tulajdonsagNev));
-        }
+        public bool IsUser { get; set; } = true;
         public NewProfileWindow(ObservableCollection<string> raktarak, ObservableCollection<LogData> users)
         {
             InitializeComponent();
@@ -80,7 +57,7 @@ namespace Raktarkezelo
         {
             if (InputCheck(NewUser))
             {
-                NewUser.isUser = this.IsUser;
+                NewUser.isUser = IsUser;
                 this.DialogResult = true;
             }
         }

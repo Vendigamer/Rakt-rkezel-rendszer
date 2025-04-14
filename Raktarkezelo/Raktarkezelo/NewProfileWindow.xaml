@@ -43,7 +43,7 @@
             <Label Content="Csak olvasó?"></Label>
             <StackPanel Orientation="Horizontal">
                 <RadioButton Content="Igen" GroupName="Readonly" Margin="20,0,10,0" Foreground="White" IsChecked="{Binding IsUser}"></RadioButton>
-                <RadioButton Content="Nem" GroupName="Readonly" Foreground="White" IsChecked="{Binding IsAdmin}"></RadioButton>
+                <RadioButton Content="Nem" GroupName="Readonly" Foreground="White"></RadioButton>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Bottom">
