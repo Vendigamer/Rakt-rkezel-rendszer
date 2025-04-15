@@ -12,5 +12,6 @@ namespace Raktarkezelo
         public string jelszo { get; set; }
         public string raktar { get; set; }
         public bool isUser { get; set; }
+        public bool isOwner { get; set; } = false;
     }
 }

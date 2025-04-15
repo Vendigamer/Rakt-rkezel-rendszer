@@ -24,15 +24,10 @@ namespace Raktarkezelo
     {
         public LogData InputText { get; set; } = new LogData();
         public ObservableCollection<LogData> Users { get; set; }
-        public bool IsNew { get; set; }
-        public string RaktarName { get; set; }
-        public bool IsUser { get; set; }
-        public string BejelentkezesSzoveg => IsNew ? "Bejelentkezés" : $"Bejelentkezés a\n{RaktarName}ba";
-        public LoginWindow(string raktarName, bool isNew)
+
+        public LoginWindow()
         {
             InitializeComponent();
-            this.RaktarName = raktarName;
-            this.IsNew = isNew;
             this.DataContext = this;
             FileRead();
         }
@@ -56,20 +51,12 @@ namespace Raktarkezelo
             if (InputCheck(InputText))
             {
                 LogData user = new LogData();
-                if (IsNew)
-                {
-                    user = Users.FirstOrDefault(x => x.felhasznalonev == InputText.felhasznalonev && x.jelszo == InputText.jelszo);
-                }
-                else if (!IsNew)
-                {
-                    user = Users.FirstOrDefault(x => x.felhasznalonev == InputText.felhasznalonev && x.jelszo == InputText.jelszo && x.raktar == RaktarName);
-                }
+                user = Users.FirstOrDefault(x => x.felhasznalonev == InputText.felhasznalonev && x.jelszo == InputText.jelszo);
                 if (user == null)
                 {
-                    MessageBox.Show("Hibás felhasználónév vagy jelszó vagy nincs jogosultsága ebbe a raktárba belépni!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Hibás felhasználónév vagy jelszó!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                IsUser = user.isUser;
                 this.DialogResult = true;
             }
         }
@@ -87,12 +74,6 @@ namespace Raktarkezelo
                 return false;
             }
             return true;
-        }
-
-        private void cancel_BTN_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
         }
     }
 }

@@ -43,10 +43,10 @@
             </DataGrid>
         </GroupBox>
         <Label Content="Raktár" Grid.Column="1" FontSize="30" FontWeight="Bold" Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
-        <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="200" Height="25" Margin="0,20,0,0" SelectedItem="{Binding RaktarName}" ItemsSource="{Binding Raktarak}"></ComboBox>
+        <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="200" Height="25" Margin="0,20,0,0" SelectedItem="{Binding RaktarName}" ItemsSource="{Binding UsersRaktarak}"></ComboBox>
         <Button Content="Belépés" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="150" Height="30" Margin="0,80,0,0" x:Name="mainLogin_BTN" Click="mainLogin_BTN_Click"></Button>
-        <Button Content="Raktár hozzáadása" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,20" x:Name="addRaktar_BTN" Click="addRaktar_BTN_Click"></Button>
-        <Button Content="Új profil Létrehozása" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,70" x:Name="newProfile_BTN" Click="newProfile_BTN_Click"></Button>
+        <Button Content="Raktár hozzáadása" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,20" x:Name="addRaktar_BTN" Click="addRaktar_BTN_Click" IsEnabled="{Binding IsEnabledBTN}"></Button>
+        <Button Content="Új profil Létrehozása" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,70" x:Name="newProfile_BTN" Click="newProfile_BTN_Click" IsEnabled="{Binding IsEnabledBTN}"></Button>
         <Button Content="Szállítási napló" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="130" Height="30" Margin="0,0,0,120" x:Name="szallitasiNaplo_BTN" Click="szallitasiNaplo_BTN_Click"></Button>
     </Grid>
 </Window>

@@ -31,6 +31,7 @@ namespace Raktarkezelo
             isUser = true
         };
         public bool IsUser { get; set; } = true;
+        public bool IsOwner { get; set; } = true;
         public NewProfileWindow(ObservableCollection<string> raktarak, ObservableCollection<LogData> users)
         {
             InitializeComponent();
@@ -58,6 +59,18 @@ namespace Raktarkezelo
             if (InputCheck(NewUser))
             {
                 NewUser.isUser = IsUser;
+                NewUser.isOwner = IsOwner;
+                if (IsOwner)
+                {
+                    Users.Where(x => x.felhasznalonev == NewUser.felhasznalonev).ToList().ForEach(x => Users.Remove(x));
+                    NewUser.raktar = "";
+                    NewUser.isUser = false;
+                }
+                else
+                {
+                    Users.Where(x => x.felhasznalonev == NewUser.felhasznalonev && x.raktar == NewUser.raktar && x.isUser != IsUser).ToList().ForEach(x => Users.Remove(x));
+                }
+                Users.Add(NewUser);
                 this.DialogResult = true;
             }
         }
@@ -74,12 +87,12 @@ namespace Raktarkezelo
                 MessageBox.Show("Kérlek add meg a jelszót!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            if (user.raktar == null || user.raktar == "")
+            if (string.IsNullOrEmpty(user.raktar) && user.isOwner == false)
             {
                 MessageBox.Show("Kérlek add meg a raktárat!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            if (Users.Any(x => x.felhasznalonev == user.felhasznalonev && x.raktar == user.raktar))
+            if (Users.Any(x => x.felhasznalonev == user.felhasznalonev && x.raktar == user.raktar && x.isUser == IsUser))
             {
                 MessageBox.Show("Ez a felhasználónév már létezik ilyen raktárral!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;

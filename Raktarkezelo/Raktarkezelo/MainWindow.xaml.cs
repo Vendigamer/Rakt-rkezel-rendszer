@@ -21,16 +21,30 @@ namespace Raktarkezelo
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public ObservableCollection<ProdData> Products { get; set; }
-        public bool IsNew { get; set; }
         private ObservableCollection<ProdData> filteredProducts;
-        public ObservableCollection<string> Raktarak { get; set; }
-        public SearchModel SearchInput { get; set; } = new SearchModel();
         public ObservableCollection<ProdData> FilteredProducts
         {
             get { return filteredProducts; }
             set { filteredProducts = value; OnPropertyChanged(nameof(FilteredProducts)); }
         }
+        public ObservableCollection<string> Raktarak { get; set; }
+        private ObservableCollection<string> usersRaktarak;
+        public ObservableCollection<string> UsersRaktarak
+        {
+            get { return usersRaktarak; }
+            set { usersRaktarak = value; OnPropertyChanged(nameof(UsersRaktarak)); }
+        }
+        public string LogedUsername { get; set; }
+        public bool IsOwner { get; set; }
+        public SearchModel SearchInput { get; set; } = new SearchModel();
         public string RaktarName { get; set; }
+        private bool isEnabledBTN;
+        public bool IsEnabledBTN
+        {
+            get { return isEnabledBTN; }
+            set { isEnabledBTN = value; OnPropertyChanged(nameof(IsEnabledBTN)); }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string tulajdonsagNev)
@@ -45,6 +59,26 @@ namespace Raktarkezelo
             FileRead();
             Raktarak = new(Products.Select(x => x.raktar).Distinct().Order());
             Raktarak.Insert(0, "");
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
+            if (loginWindow.DialogResult == true)
+            {
+                LogedUsername = loginWindow.InputText.felhasznalonev;
+                IsOwner = loginWindow.Users.Any(x => x.felhasznalonev == LogedUsername && x.isOwner == true);
+                if (IsOwner == true)
+                {
+                    UsersRaktarak = Raktarak;
+                    IsEnabledBTN = true;
+                }
+                else
+                {
+                    UsersRaktarak = new(loginWindow.Users.Where(x => x.felhasznalonev == LogedUsername && x.isUser == false).Select(x => x.raktar));
+                }
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void FileRead()
@@ -56,14 +90,21 @@ namespace Raktarkezelo
 
         private void mainLogin_BTN_Click(object sender, RoutedEventArgs e)
         {
-            IsNew = false;
             if (RaktarName != null && RaktarName != "")
             {
-                LoginWindow loginWindow = new LoginWindow(RaktarName, IsNew);
-                loginWindow.ShowDialog();
-                if (loginWindow.DialogResult == true)
+                LoginWindow loginWindow = new LoginWindow();
+                RaktarLoginWindow raktarLoginWindow = new RaktarLoginWindow(loginWindow.Users, LogedUsername, RaktarName);
+                if (!IsOwner)
+                { 
+                    raktarLoginWindow.ShowDialog();
+                }
+                else
                 {
-                    bool IsUser = loginWindow.IsUser;
+                    raktarLoginWindow.IsOwnerLog = true; 
+                    raktarLoginWindow.ShowDialog();
+                }
+                if (raktarLoginWindow.DialogResult == true)
+                {
                     MessageBox.Show("Sikeres bejelentkezés!", "Információ", MessageBoxButton.OK, MessageBoxImage.Information);
                     //IDE KELLENE A RAKTÁRBA VALÓ BELÉPÉS UTÁNI FUNKCIÓKAT BELETENNI
                 }
@@ -81,36 +122,22 @@ namespace Raktarkezelo
 
         private void addRaktar_BTN_Click(object sender, RoutedEventArgs e)
         {
-            IsNew = true;
-            LoginWindow loginWindow = new LoginWindow(RaktarName, IsNew);
-            loginWindow.ShowDialog();
-            if (loginWindow.DialogResult == true)
+            AddRaktarWindow addRaktarWindow = new AddRaktarWindow(Products);
+            addRaktarWindow.ShowDialog();
+            if (addRaktarWindow.DialogResult == true)
             {
-                bool IsUser = loginWindow.IsUser;
-                if (!IsUser)
+                string jsonStr = File.ReadAllText("ProductData.json");
+                Products = JsonSerializer.Deserialize<ObservableCollection<ProdData>>(jsonStr)!;
+                foreach (var product in addRaktarWindow.NewProducts)
                 {
-                    AddRaktarWindow addRaktarWindow = new AddRaktarWindow(Products);
-                    addRaktarWindow.ShowDialog();
-                    if (addRaktarWindow.DialogResult == true)
-                    {
-                        string jsonStr = File.ReadAllText("ProductData.json");
-                        Products = JsonSerializer.Deserialize<ObservableCollection<ProdData>>(jsonStr)!;
-                        foreach (var product in addRaktarWindow.NewProducts)
-                        {
-                            product.raktar = addRaktarWindow.RaktarName;
-                            Products.Add(product);
-                        }
-                        newRaktarAddToList(addRaktarWindow.RaktarName);
-                        string jsonWriteStr = JsonSerializer.Serialize(Products);
-                        File.WriteAllText("ProductData.json", jsonWriteStr);
-                        MessageBox.Show("Sikeres raktár hozzáadás!", "Információ", MessageBoxButton.OK, MessageBoxImage.Information);
-                        filter_BTN_Click(sender, e);
-                    }
+                    product.raktar = addRaktarWindow.RaktarName;
+                    Products.Add(product);
                 }
-                else
-                {
-                    MessageBox.Show("Nincs jogosultságod új raktár hozzáadásához", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                newRaktarAddToList(addRaktarWindow.RaktarName);
+                string jsonWriteStr = JsonSerializer.Serialize(Products);
+                File.WriteAllText("ProductData.json", jsonWriteStr);
+                MessageBox.Show("Sikeres raktár hozzáadás!", "Információ", MessageBoxButton.OK, MessageBoxImage.Information);
+                filter_BTN_Click(sender, e);
             }
         }
 
@@ -124,30 +151,16 @@ namespace Raktarkezelo
 
         private void newProfile_BTN_Click(object sender, RoutedEventArgs e)
         {
-            IsNew = true;
-            LoginWindow loginWindow = new LoginWindow(RaktarName, IsNew);
-            loginWindow.ShowDialog();
-            if (loginWindow.DialogResult == true)
+            ObservableCollection<LogData> Users;
+            string jsonStr = File.ReadAllText("LoginData.json");
+            Users = JsonSerializer.Deserialize<ObservableCollection<LogData>>(jsonStr)!;
+            NewProfileWindow newProfileWindow = new NewProfileWindow(Raktarak, Users);
+            newProfileWindow.ShowDialog();
+            if (newProfileWindow.DialogResult == true)
             {
-                bool IsUser = loginWindow.IsUser;
-                if (!IsUser)
-                {
-                    NewProfileWindow newProfileWindow = new NewProfileWindow(Raktarak, loginWindow.Users);
-                    newProfileWindow.ShowDialog();
-                    if (newProfileWindow.DialogResult == true)
-                    {
-                        string jsonStr = File.ReadAllText("LoginData.json");
-                        ObservableCollection<LogData> users = JsonSerializer.Deserialize<ObservableCollection<LogData>>(jsonStr)!;
-                        users.Add(newProfileWindow.NewUser);
-                        string jsonWriteStr = JsonSerializer.Serialize(users);
-                        File.WriteAllText("LoginData.json", jsonWriteStr);
-                        MessageBox.Show("Sikeres új profil létrehozás!", "Információ", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Nincs jogosultságod új profilt létrehozni", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                string jsonWriteStr = JsonSerializer.Serialize(Users);
+                File.WriteAllText("LoginData.json", jsonWriteStr);
+                MessageBox.Show("Sikeres új profil létrehozás!", "Információ", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

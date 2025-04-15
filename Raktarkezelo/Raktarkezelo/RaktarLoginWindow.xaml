@@ -1,0 +1,16 @@
+﻿<Window x:Class="Raktarkezelo.RaktarLoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Raktarkezelo"
+        mc:Ignorable="d"
+        Title="Jelszó" Height="100" Width="400" Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <StackPanel Orientation="Horizontal">
+            <PasswordBox x:Name="jelszo_INP" Width="200" Margin="0 0 20 0" Height="25" FontSize="16"></PasswordBox>
+            <Button Content="Belépés" Height="30" Width="60" x:Name="login_BTN" Click="login_BTN_Click" Margin="10 0"></Button>
+            <Button Content="Vissza" Height="30" Width="50" x:Name="cancel_BTN" Click="cancel_BTN_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Raktarkezelo"
         mc:Ignorable="d"
-        Title="Profil létrehozása" Height="370" Width="280" FontSize="16" Background="Gray">
+        Title="Profil létrehozása" Height="420" Width="280" FontSize="16" Background="Gray">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.7*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="0.8*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -40,13 +41,20 @@
             <ComboBox Width="230" ItemsSource="{Binding Raktarak}" SelectedItem="{Binding NewUser.raktar}" FontSize="16"></ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="4">
-            <Label Content="Csak olvasó?"></Label>
+            <Label Content="Admin hozzáférés a raktárhoz"></Label>
             <StackPanel Orientation="Horizontal">
-                <RadioButton Content="Igen" GroupName="Readonly" Margin="20,0,10,0" Foreground="White" IsChecked="{Binding IsUser}"></RadioButton>
-                <RadioButton Content="Nem" GroupName="Readonly" Foreground="White"></RadioButton>
+                <RadioButton Content="Igen" GroupName="Readonly" Margin="20,0,10,0" Foreground="White"></RadioButton>
+                <RadioButton Content="Nem" GroupName="Readonly" Foreground="White" IsChecked="{Binding IsUser}"></RadioButton>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Bottom">
+        <StackPanel Grid.Row="5">
+            <Label Content="Teljes hozzáférés?"></Label>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="Igen" GroupName="Owner" Margin="20,0,10,0" Foreground="White" IsChecked="{Binding IsOwner}"></RadioButton>
+                <RadioButton Content="Nem" GroupName="Owner" Foreground="White"></RadioButton>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Orientation="Horizontal" VerticalAlignment="Bottom">
             <Button Content="Vissza" Width="70" Height="35" Margin="10 0 60 0" x:Name="cancel_BTN" Click="cancel_BTN_Click"></Button>
             <Button Content="Hozzáadás" Width="100" Height="35" x:Name="add_BTN" Click="add_BTN_Click"></Button>
         </StackPanel>
