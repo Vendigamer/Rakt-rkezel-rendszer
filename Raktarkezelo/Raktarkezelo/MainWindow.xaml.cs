@@ -44,8 +44,6 @@ namespace Raktarkezelo
             get { return isEnabledBTN; }
             set { isEnabledBTN = value; OnPropertyChanged(nameof(IsEnabledBTN)); }
         }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string tulajdonsagNev)
         {

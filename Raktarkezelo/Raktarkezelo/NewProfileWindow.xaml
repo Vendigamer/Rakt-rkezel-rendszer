@@ -38,11 +38,11 @@
         </StackPanel>
         <StackPanel Grid.Row="3">
             <Label Content="Raktár:"></Label>
-            <ComboBox Width="230" ItemsSource="{Binding Raktarak}" SelectedItem="{Binding NewUser.raktar}" FontSize="16"></ComboBox>
+            <ComboBox Width="230" ItemsSource="{Binding Raktarak}" SelectedItem="{Binding NewUser.raktar}" FontSize="16" IsEnabled="{Binding IsEnabledElements}"></ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="4">
             <Label Content="Admin hozzáférés a raktárhoz"></Label>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" IsEnabled="{Binding IsEnabledElements}">
                 <RadioButton Content="Igen" GroupName="Readonly" Margin="20,0,10,0" Foreground="White"></RadioButton>
                 <RadioButton Content="Nem" GroupName="Readonly" Foreground="White" IsChecked="{Binding IsUser}"></RadioButton>
             </StackPanel>

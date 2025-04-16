@@ -19,9 +19,10 @@ namespace Raktarkezelo
     /// <summary>
     /// Interaction logic for NewProfileWindow.xaml
     /// </summary>
-    public partial class NewProfileWindow : Window
+    public partial class NewProfileWindow : Window, INotifyPropertyChanged
     {
         public ObservableCollection<string> Raktarak { get; set; }
+        public bool IsEnabledElements => !IsOwner;
         public ObservableCollection<LogData> Users { get; set; }
         public LogData NewUser { get; set; } = new()
         {
@@ -31,7 +32,26 @@ namespace Raktarkezelo
             isUser = true
         };
         public bool IsUser { get; set; } = true;
-        public bool IsOwner { get; set; } = true;
+        private bool isOwner = true;
+        public bool IsOwner
+        {
+            get { return isOwner; }
+            set
+            {
+                if (isOwner != value)
+                {
+                    isOwner = value;
+                    OnPropertyChanged(nameof(IsOwner));
+                    OnPropertyChanged(nameof(IsEnabledElements));
+                }
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string tulajdonsagNev)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(tulajdonsagNev));
+        }
+
         public NewProfileWindow(ObservableCollection<string> raktarak, ObservableCollection<LogData> users)
         {
             InitializeComponent();
@@ -69,6 +89,7 @@ namespace Raktarkezelo
                 else
                 {
                     Users.Where(x => x.felhasznalonev == NewUser.felhasznalonev && x.raktar == NewUser.raktar && x.isUser != IsUser).ToList().ForEach(x => Users.Remove(x));
+                    Users.Where(x => x.felhasznalonev == NewUser.felhasznalonev && x.isOwner == true).ToList().ForEach(x => Users.Remove(x));
                 }
                 Users.Add(NewUser);
                 this.DialogResult = true;
@@ -87,7 +108,7 @@ namespace Raktarkezelo
                 MessageBox.Show("Kérlek add meg a jelszót!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            if (string.IsNullOrEmpty(user.raktar) && user.isOwner == false)
+            if (string.IsNullOrEmpty(user.raktar) && IsEnabledElements == true)
             {
                 MessageBox.Show("Kérlek add meg a raktárat!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
