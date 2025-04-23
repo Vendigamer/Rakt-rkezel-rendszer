@@ -1,0 +1,31 @@
+﻿<Window x:Class="Raktarkezelo.RaktarDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Raktarkezelo"
+        mc:Ignorable="d"
+        Title="Adatok módosítása" Height="300" Width="300">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Név:" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
+        <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="25"></TextBox>
+        <Label Content="Cikkszám:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
+        <TextBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" IsEnabled="False" Height="25"></TextBox>
+        <Label Content="Mennyiség:" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
+        <TextBox Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="25"></TextBox>
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="save_BTN" Content="Mentés" Width="100" Height="25" Margin="0,0,15,0"></Button>
+            <Button x:Name="cancel_BTN" Content="Mégsem" Width="100" Height="25"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

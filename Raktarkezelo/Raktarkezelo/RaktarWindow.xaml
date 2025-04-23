@@ -1,0 +1,32 @@
+﻿<Window x:Class="Raktarkezelo.RaktarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Raktarkezelo"
+        mc:Ignorable="d"
+        Title="RaktarWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Termékek" Width="380">
+            <DataGrid Margin="10" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Termék neve" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Mennyiség" Width="Auto"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cikkszám" Width="Auto"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+            <Button Content="Adatok módosítása" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,20"></Button>
+            <Button Content="Termék átszállítása" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,20"></Button>
+            <Button Content="Termék törlése" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,100"></Button>
+            <Button Content="Raktár törlése" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center"></Button>
+        </StackPanel>
+        
+        
+    </Grid>
+</Window>

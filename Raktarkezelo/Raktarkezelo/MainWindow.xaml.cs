@@ -103,8 +103,7 @@ namespace Raktarkezelo
                 }
                 if (raktarLoginWindow.DialogResult == true)
                 {
-                    MessageBox.Show("Sikeres bejelentkezés!", "Információ", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //IDE KELLENE A RAKTÁRBA VALÓ BELÉPÉS UTÁNI FUNKCIÓKAT BELETENNI
+                    RaktarWindow raktarwindow = new RaktarWindow();
                 }
             }
             else
