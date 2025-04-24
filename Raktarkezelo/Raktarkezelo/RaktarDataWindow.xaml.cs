@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,22 @@ namespace Raktarkezelo
     /// </summary>
     public partial class RaktarDataWindow : Window
     {
-        public RaktarDataWindow()
+        public ProdData Product { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        public RaktarDataWindow(ProdData product)
         {
             InitializeComponent();
+            this.DataContext = this;
+            this.Product = product;
+        }
+
+        private void cancel_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+            this.Close();
         }
     }
 }

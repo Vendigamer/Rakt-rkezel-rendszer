@@ -22,11 +22,13 @@ namespace Raktarkezelo
     {
         public ObservableCollection<ProdData> Products { get; set; }
         private ObservableCollection<ProdData> filteredProducts;
+        private ObservableCollection<ProdData> raktarProducts;
         public ObservableCollection<ProdData> FilteredProducts
         {
             get { return filteredProducts; }
             set { filteredProducts = value; OnPropertyChanged(nameof(FilteredProducts)); }
         }
+
         public ObservableCollection<string> Raktarak { get; set; }
         private ObservableCollection<string> usersRaktarak;
         public ObservableCollection<string> UsersRaktarak
@@ -103,7 +105,9 @@ namespace Raktarkezelo
                 }
                 if (raktarLoginWindow.DialogResult == true)
                 {
-                    RaktarWindow raktarwindow = new RaktarWindow();
+                    raktarProducts = new(Products.Where(x => x.raktar.ToLower().StartsWith(RaktarName.ToLower())));
+                    RaktarWindow raktarwindow = new RaktarWindow(raktarProducts);
+                    raktarwindow.ShowDialog();
                 }
             }
             else
@@ -165,6 +169,12 @@ namespace Raktarkezelo
         {
             DeliveryLogWindow deliveryLogWindow = new DeliveryLogWindow();
             deliveryLogWindow.ShowDialog();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            string jsonWriteStr = JsonSerializer.Serialize(Products);
+            File.WriteAllText("ProductData.json", jsonWriteStr);
         }
     }
 }
