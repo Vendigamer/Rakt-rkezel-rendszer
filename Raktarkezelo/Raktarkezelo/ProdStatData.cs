@@ -12,8 +12,6 @@ namespace Raktarkezelo
         public int darabszam { get; set; }
         public string honnan { get; set; }
         public string hova { get; set; }
-        public int sor { get; set; }
-        public int polc { get; set; }
         public string user { get; set; }
         public DateTime indul { get; set; }
         public DateTime erkezik { get; set; }

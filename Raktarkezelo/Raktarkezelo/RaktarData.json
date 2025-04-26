@@ -1,0 +1,74 @@
+[
+  {
+    "nev": "Budapest Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 676
+  },
+  {
+    "nev": "Debrecen Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 590
+  },
+  {
+    "nev": "Eger Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 436
+  },
+  {
+    "nev": "Gy\u0151r Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 304
+  },
+  {
+    "nev": "Kecskem\u00E9t Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 445
+  },
+  {
+    "nev": "Miskolc Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 505
+  },
+  {
+    "nev": "Ny\u00EDregyh\u00E1za Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 268
+  },
+  {
+    "nev": "Ny\u00EDregyhsor\u00E1za Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 64
+  },
+  {
+    "nev": "P\u00E9cs Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 614
+  },
+  {
+    "nev": "Szeged Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 542
+  },
+  {
+    "nev": "Sz\u00E9kesfeh\u00E9rv\u00E1r Rakt\u00E1r",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 523
+  },
+  {
+    "nev": "test",
+    "sor": 10,
+    "kapacitas": 1000,
+    "termek": 42
+  }
+]

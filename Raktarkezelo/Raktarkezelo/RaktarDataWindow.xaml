@@ -18,13 +18,13 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Label Content="Név:" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
-        <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="25" Text="{Binding Product.nev}"></TextBox>
+        <TextBox x:Name="nev_TXB" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="25" Text="{Binding Product.nev}"></TextBox>
         <Label Content="Cikkszám:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
-        <TextBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" IsEnabled="False" Height="25" Text="{Binding Product.cikkszam}"></TextBox>
+        <TextBox x:Name="cikkszam_TXB" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" IsEnabled="False" Height="25" Text="{Binding Product.cikkszam}"></TextBox>
         <Label Content="Mennyiség:" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
-        <TextBox Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="25" Text="{Binding Product.darabszam}"></TextBox>
+        <TextBox x:Name="darabszam_TXB" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="25" Text="{Binding Product.darabszam}"></TextBox>
         <StackPanel Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button x:Name="save_BTN" Content="Mentés" Width="100" Height="25" Margin="0,0,15,0"></Button>
+            <Button x:Name="save_BTN" Content="Mentés" Width="100" Height="25" Margin="0,0,15,0" Click="save_BTN_Click"></Button>
             <Button x:Name="cancel_BTN" Content="Mégsem" Width="100" Height="25" Click="cancel_BTN_Click"></Button>
         </StackPanel>
     </Grid>

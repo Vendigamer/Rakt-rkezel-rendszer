@@ -30,6 +30,9 @@ namespace Raktarkezelo
         }
 
         public ObservableCollection<string> Raktarak { get; set; }
+
+        public ObservableCollection<RaktarData> RaktarakList = new ObservableCollection<RaktarData>();
+
         private ObservableCollection<string> usersRaktarak;
         public ObservableCollection<string> UsersRaktarak
         {
@@ -57,7 +60,7 @@ namespace Raktarkezelo
             InitializeComponent();
             this.DataContext = this;
             FileRead();
-            Raktarak = new(Products.Select(x => x.raktar).Distinct().Order());
+            Raktarak = new(RaktarakList.Select(x => x.nev).Distinct().Order());
             Raktarak.Insert(0, "");
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
@@ -79,6 +82,7 @@ namespace Raktarkezelo
             {
                 this.Close();
             }
+
         }
 
         private void FileRead()
@@ -86,6 +90,8 @@ namespace Raktarkezelo
             string jsonStr = File.ReadAllText("ProductData.json");
             Products = JsonSerializer.Deserialize<ObservableCollection<ProdData>>(jsonStr)!;
             FilteredProducts = JsonSerializer.Deserialize<ObservableCollection<ProdData>>(jsonStr)!;
+            string jsonStr2 = File.ReadAllText("RaktarData.json");
+            RaktarakList = JsonSerializer.Deserialize<ObservableCollection<RaktarData>>(jsonStr2)!;
         }
 
         private void mainLogin_BTN_Click(object sender, RoutedEventArgs e)
@@ -106,8 +112,29 @@ namespace Raktarkezelo
                 if (raktarLoginWindow.DialogResult == true)
                 {
                     raktarProducts = new(Products.Where(x => x.raktar.ToLower().StartsWith(RaktarName.ToLower())));
-                    RaktarWindow raktarwindow = new RaktarWindow(raktarProducts);
+                    RaktarWindow raktarwindow = new RaktarWindow(raktarProducts, RaktarakList);
                     raktarwindow.ShowDialog();
+                    if (raktarwindow.CustomDialogResult == true)
+                    {
+                        foreach (var product in raktarwindow.AllProducts)
+                        {
+                            foreach (var Product in Products)
+                            {
+                                if (Product.cikkszam == product.cikkszam)
+                                {
+                                    Product.nev = product.nev;
+                                    Product.cikkszam = product.cikkszam;
+                                    Product.raktar = product.raktar;
+                                    Product.darabszam = product.darabszam;
+                                }
+                            }
+                        }
+                        filter_BTN_Click(sender, e);
+                    }
+                    if (raktarwindow.DialogResult == true)
+                    {
+                        filter_BTN_Click(sender, e);
+                    }
                 }
             }
             else
@@ -173,8 +200,8 @@ namespace Raktarkezelo
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            string jsonWriteStr = JsonSerializer.Serialize(Products);
-            File.WriteAllText("ProductData.json", jsonWriteStr);
+            string jsonStr = JsonSerializer.Serialize(RaktarakList);
+            File.WriteAllText("RaktarData.json", jsonStr);
         }
     }
 }
