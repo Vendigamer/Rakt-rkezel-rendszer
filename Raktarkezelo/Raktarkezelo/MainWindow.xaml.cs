@@ -223,29 +223,27 @@ namespace Raktarkezelo
         private void ShippedProductHandler()
         {
             string jsonStr = File.ReadAllText("ProductsStatusData.json");
-            ShippedProducts = JsonSerializer.Deserialize<ObservableCollection<ProdStatData>>(jsonStr);
+            ShippedProducts = JsonSerializer.Deserialize<ObservableCollection<ProdStatData>>(jsonStr)!;
             foreach (var item in ShippedProducts)
             {
-                if (!AlreadyShippedProducts.Contains(item) && item.statusz == "Kiszállítva")
+                if (!AlreadyShippedProducts.Any(x => x.cikkszam == item.cikkszam && x.hova == item.hova && x.erkezik == item.erkezik) && item.statusz == "Kiszállítva")
                 {
-                    foreach (var product in Products)
+                    var sameProd = Products.FirstOrDefault(p => p.cikkszam == item.cikkszam && p.raktar == item.hova);
+                    if (sameProd != null)
                     {
-                        if (item.cikkszam == product.cikkszam && item.hova == product.raktar)
-                        {
-                            product.darabszam += item.darabszam;
-                            AlreadyShippedProducts.Add(item);
-                            return;
-                        }
+                        sameProd.darabszam += item.darabszam;
                     }
-                    ProdData prodData = new ProdData()
+                    else
                     {
-                        nev = item.nev,
-                        raktar = item.hova,
-                        cikkszam = item.cikkszam,
-                        darabszam = item.darabszam,
-
-                    };
-                    Products.Add(prodData);
+                        ProdData prodData = new ProdData()
+                        {
+                            nev = item.nev,
+                            raktar = item.hova,
+                            cikkszam = item.cikkszam,
+                            darabszam = item.darabszam,
+                        };
+                        Products.Add(prodData);
+                    }
                     AlreadyShippedProducts.Add(item);
                 }
             }
