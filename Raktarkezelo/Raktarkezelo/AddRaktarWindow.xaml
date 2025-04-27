@@ -12,6 +12,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="1.8*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -34,7 +35,11 @@
             <TextBox Text="{Binding FileLocation}" Width="230" IsReadOnly="True" Margin="0,0,0,10" FontSize="16"/>
             <Button Content="Fájl kiválasztása" Width="150" Click="SelectFile_Click" Height="30"/>
         </StackPanel>
-        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom">
+        <StackPanel Grid.Row="3">
+            <Label Content="Méret:"></Label>
+            <ComboBox ItemsSource="{Binding Sor}" SelectedItem="{Binding Meret}" Width="230" Margin="0,0,0,10" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Bottom">
             <Button Content="Vissza" Width="70" Height="35" Margin="10 0 60 0" x:Name="cancel_BTN" Click="cancel_BTN_Click"></Button>
             <Button Content="Hozzáadás" Width="100" Height="35" x:Name="add_BTN" Click="add_BTN_Click"></Button>
         </StackPanel>

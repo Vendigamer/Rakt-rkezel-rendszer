@@ -32,7 +32,7 @@
             <Button x:Name="Edit_BTN" Content="Adatok módosítása" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,20" Click="Edit_BTN_Click" IsEnabled="{Binding IsSomethingSelected}"></Button>
             <Button x:Name="Trans_BTN" Content="Termék átszállítása" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,20" Click="Trans_BTN_Click" IsEnabled="{Binding IsSomethingSelected}"></Button>
             <Button x:Name="Delete_BTN"  Content="Termék törlése" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,100" IsEnabled="{Binding IsSomethingSelected}" Click="Delete_BTN_Click"></Button>
-            <Button x:Name="DeleteRak_BTN" Content="Raktár törlése" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Click="DeleteRak_BTN_Click"></Button>
+            <Button x:Name="DeleteRak_BTN" Content="Raktár törlése" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Click="DeleteRak_BTN_Click" IsEnabled="{Binding IsOwner}"></Button>
         </StackPanel>
         
         

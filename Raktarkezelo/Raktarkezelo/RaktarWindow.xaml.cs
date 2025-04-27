@@ -27,7 +27,7 @@ namespace Raktarkezelo
 
         public ObservableCollection<RaktarData> Raktarak { get; set; }
 
-        public RaktarData SelectedRaktar { get; set; }
+        public RaktarData SelectedRaktar = new RaktarData();
 
         public RaktarData SelectedRaktarToShow
         {
@@ -39,6 +39,8 @@ namespace Raktarkezelo
 
         public bool issomethingselected = new bool();
 
+        public bool IsOwner { get; set; }
+
         public bool IsSomethingSelected
         {
             get { return issomethingselected; }
@@ -49,6 +51,7 @@ namespace Raktarkezelo
 
         public string LogedUsername = "";
 
+        public string RaktarName = "";
         public ObservableCollection<ProdData> AllProducts
         {
             get { return allProducts; }
@@ -60,7 +63,7 @@ namespace Raktarkezelo
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(tulajdonsagNev));
         }
-        public RaktarWindow(ObservableCollection<ProdData> products, ObservableCollection<RaktarData> raktarak, ObservableCollection<ProdData> productsList, string logedUsername)
+        public RaktarWindow(ObservableCollection<ProdData> products, ObservableCollection<RaktarData> raktarak, ObservableCollection<ProdData> productsList, string logedUsername, bool isowner, string raktarname)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -69,6 +72,8 @@ namespace Raktarkezelo
             ProductsList = productsList;
             this.ProductsList = productsList;
             this.LogedUsername = logedUsername;
+            this.IsOwner = isowner;
+            this.RaktarName = raktarname;
             RaktarSelect();
         }
 
@@ -88,7 +93,7 @@ namespace Raktarkezelo
         {
             foreach (var raktar in Raktarak)
             {
-                if (raktar.nev == allProducts[0].raktar)
+                if (raktar.nev == RaktarName)
                 {
                     SelectedRaktarToShow = raktar;
                 }

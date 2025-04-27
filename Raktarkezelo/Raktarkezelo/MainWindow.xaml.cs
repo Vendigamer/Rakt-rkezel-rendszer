@@ -47,6 +47,7 @@ namespace Raktarkezelo
         public bool IsOwner { get; set; }
         public SearchModel SearchInput { get; set; } = new SearchModel();
         public string RaktarName { get; set; }
+
         private bool isEnabledBTN;
         public bool IsEnabledBTN
         {
@@ -119,7 +120,7 @@ namespace Raktarkezelo
                 if (raktarLoginWindow.DialogResult == true)
                 {
                     raktarProducts = new(Products.Where(x => x.raktar.ToLower().StartsWith(RaktarName.ToLower())));
-                    RaktarWindow raktarwindow = new RaktarWindow(raktarProducts, RaktarakList, Products, LogedUsername);
+                    RaktarWindow raktarwindow = new RaktarWindow(raktarProducts, RaktarakList, Products, LogedUsername, IsOwner, RaktarName);
                     raktarwindow.ShowDialog();
                     if (raktarwindow.CustomDialogResult == true)
                     {
@@ -170,22 +171,24 @@ namespace Raktarkezelo
 
         private void addRaktar_BTN_Click(object sender, RoutedEventArgs e)
         {
-            AddRaktarWindow addRaktarWindow = new AddRaktarWindow(Products);
+            AddRaktarWindow addRaktarWindow = new AddRaktarWindow(Products, RaktarakList);
             addRaktarWindow.ShowDialog();
             if (addRaktarWindow.DialogResult == true)
             {
-                string jsonStr = File.ReadAllText("ProductData.json");
-                Products = JsonSerializer.Deserialize<ObservableCollection<ProdData>>(jsonStr)!;
-                foreach (var product in addRaktarWindow.NewProducts)
+                if (addRaktarWindow.NewProducts.Count() > 0)
                 {
-                    product.raktar = addRaktarWindow.RaktarName;
-                    Products.Add(product);
+                    foreach (var product in addRaktarWindow.NewProducts)
+                    {
+                        product.raktar = addRaktarWindow.RaktarName;
+                        Products.Add(product);
+                    }
                 }
                 newRaktarAddToList(addRaktarWindow.RaktarName);
                 string jsonWriteStr = JsonSerializer.Serialize(Products);
                 File.WriteAllText("ProductData.json", jsonWriteStr);
                 MessageBox.Show("Sikeres raktár hozzáadás!", "Információ", MessageBoxButton.OK, MessageBoxImage.Information);
                 filter_BTN_Click(sender, e);
+                RaktarakList = addRaktarWindow.Raktarak;
             }
         }
 

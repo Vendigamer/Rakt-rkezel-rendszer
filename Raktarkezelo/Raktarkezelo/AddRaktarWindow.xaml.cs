@@ -24,8 +24,18 @@ namespace Raktarkezelo
     /// </summary>
     public partial class AddRaktarWindow : Window, INotifyPropertyChanged
     {
-        public ObservableCollection<ProdData> NewProducts { get; set; }
+        public ObservableCollection<ProdData> NewProducts = new ObservableCollection<ProdData>();
         public ObservableCollection<ProdData> Products { get; set; }
+        public ObservableCollection<RaktarData> Raktarak { get; set; }
+
+        public ObservableCollection<string> sor = new ObservableCollection<string>();
+
+        public ObservableCollection<string> Sor
+        {
+            get { return sor; }
+            set { sor = value; OnPropertyChanged(nameof(Sor)); }
+        }
+        public int Meret { get; set; }
         public string RaktarName { get; set; }
         private string fileLocation;
         public string FileLocation
@@ -39,11 +49,16 @@ namespace Raktarkezelo
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(tulajdonsagNev));
         }
 
-        public AddRaktarWindow(ObservableCollection<ProdData> products)
+        public AddRaktarWindow(ObservableCollection<ProdData> products, ObservableCollection<RaktarData> raktarak)
         {
             InitializeComponent();
             this.DataContext = this;
             this.Products = products;
+            this.Raktarak = raktarak;
+            for (int i = 0; i < 11; i++)
+            {
+                this.sor.Add(i.ToString());
+            }
         }
 
         private void SelectFile_Click(object sender, RoutedEventArgs e)
@@ -62,9 +77,28 @@ namespace Raktarkezelo
         {
             if (InputCheck())
             {
-                string jsonStr = File.ReadAllText($"{FileLocation}");
-                NewProducts = JsonSerializer.Deserialize<ObservableCollection<ProdData>>(jsonStr)!;
                 this.DialogResult = true;
+                int x = 0;
+                if (string.IsNullOrEmpty(FileLocation))
+                {
+                    x = 0;
+                }
+                else
+                {
+                    string jsonStr = File.ReadAllText($"{FileLocation}");
+                    NewProducts = JsonSerializer.Deserialize<ObservableCollection<ProdData>>(jsonStr)!;
+                    foreach (var item in NewProducts)
+                    {
+                        x += item.darabszam;
+                    }
+                }
+                RaktarData raktar = new RaktarData()
+                {
+                    nev = RaktarName,
+                    kapacitas = Meret * 100,
+                    termek = x
+                };
+                Raktarak.Add(raktar);
             }
         }
 
@@ -79,11 +113,6 @@ namespace Raktarkezelo
             if (string.IsNullOrEmpty(RaktarName))
             {
                 MessageBox.Show("Kérlek add meg a raktár nevét!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            if (string.IsNullOrEmpty(FileLocation))
-            {
-                MessageBox.Show("Kérlek add meg a termék(ek) fájljának a helyét!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (Products.Any(x => x.raktar.ToLower() == RaktarName.ToLower()))
