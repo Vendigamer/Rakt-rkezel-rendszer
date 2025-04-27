@@ -79,7 +79,7 @@ namespace Raktarkezelo
             {
                 this.DialogResult = true;
                 int x = 0;
-                if (string.IsNullOrEmpty(FileLocation))
+                if ( fileLocation == "nem kötelező")
                 {
                     x = 0;
                 }
