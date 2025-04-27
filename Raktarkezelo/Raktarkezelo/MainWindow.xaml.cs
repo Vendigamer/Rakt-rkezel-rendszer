@@ -228,6 +228,15 @@ namespace Raktarkezelo
             {
                 if (!AlreadyShippedProducts.Contains(item) && item.statusz == "Kiszállítva")
                 {
+                    foreach (var product in Products)
+                    {
+                        if (item.cikkszam == product.cikkszam && item.hova == product.raktar)
+                        {
+                            product.darabszam += item.darabszam;
+                            AlreadyShippedProducts.Add(item);
+                            return;
+                        }
+                    }
                     ProdData prodData = new ProdData()
                     {
                         nev = item.nev,

@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="AlreadyShippedProducts.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="LoginData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

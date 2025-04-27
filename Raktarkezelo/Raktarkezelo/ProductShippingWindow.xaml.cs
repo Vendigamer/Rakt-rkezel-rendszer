@@ -50,12 +50,10 @@ namespace Raktarkezelo
 
         public int mennyiseg = 0;
 
-        public string mennyisegstring = "";
-
-        public string Mennyiseg
+        public int Mennyiseg
         {
-            get { return mennyisegstring; }
-            set { mennyisegstring = value; OnPropertyChanged(nameof(Mennyiseg)); }
+            get { return mennyiseg; }
+            set { mennyiseg = value; OnPropertyChanged(nameof(Mennyiseg)); }
         }
 
         public string Raktar { get; set; }
@@ -98,8 +96,7 @@ namespace Raktarkezelo
 
         private void MAX_Button_Click(object sender, RoutedEventArgs e)
         {
-            mennyiseg = Product.darabszam;
-            Mennyiseg = mennyiseg.ToString();
+            Mennyiseg = Product.darabszam;
         }
 
         private void save_BTN_Click(object sender, RoutedEventArgs e)
