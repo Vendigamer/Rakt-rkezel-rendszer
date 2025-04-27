@@ -25,7 +25,7 @@
         <ComboBox Grid.Column="1" Width="120" Height="25" VerticalAlignment="Top" Margin="0,60,0,0" ItemsSource="{Binding raktaraktoshow}" SelectedItem="{Binding Raktar}"></ComboBox>
         <Label Content="Mennyiség:" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"></Label>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10">
-            <TextBox x:Name="max_TXB" Width="80" Height="20"></TextBox>
+            <TextBox x:Name="max_TXB" Width="80" Height="20" Text="{Binding Mennyiseg}"></TextBox>
             <Button x:Name="MAX_BTN" Content="Max" Margin="10,0,0,0" Click="MAX_Button_Click"></Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">

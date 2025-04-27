@@ -6,26 +6,33 @@
         xmlns:local="clr-namespace:Raktarkezelo"
         mc:Ignorable="d"
         Title="RaktarWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Termékek" Width="380" Height="300">
-            <DataGrid x:Name="raktar_DG" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding AllProducts}" SelectedItem="{Binding SelectedItem}" SelectionChanged="raktar_DG_SelectionChanged">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Termék neve" Width="*" Binding="{Binding nev}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Mennyiség" Width="Auto" Binding="{Binding darabszam}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Cikkszám" Width="Auto" Binding="{Binding cikkszam}"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </GroupBox>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <GroupBox Header="Termékek" Width="380" Height="300">
+                <DataGrid x:Name="raktar_DG" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding AllProducts}" SelectedItem="{Binding SelectedItem}" SelectionChanged="raktar_DG_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Termék neve" Width="*" Binding="{Binding nev}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Mennyiség" Width="Auto" Binding="{Binding darabszam}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Cikkszám" Width="Auto" Binding="{Binding cikkszam}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <TextBox Text="{Binding SelectedRaktarToShow.termek}"  Width="50" IsEnabled="False"></TextBox>
+                <Label Content="\"></Label>
+                <TextBox Text="{Binding SelectedRaktarToShow.kapacitas}" Width="50" IsEnabled="False"></TextBox>
+            </StackPanel>
+        </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
             <Button x:Name="New_BTN" Content="Új termék" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,20" Click="New_BTN_Click"></Button>
             <Button x:Name="Edit_BTN" Content="Adatok módosítása" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,20" Click="Edit_BTN_Click" IsEnabled="{Binding IsSomethingSelected}"></Button>
             <Button x:Name="Trans_BTN" Content="Termék átszállítása" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,20" Click="Trans_BTN_Click" IsEnabled="{Binding IsSomethingSelected}"></Button>
             <Button x:Name="Delete_BTN"  Content="Termék törlése" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Margin="0,0,0,100" IsEnabled="{Binding IsSomethingSelected}" Click="Delete_BTN_Click"></Button>
-            <Button x:Name="DeleteRak_BTN" Content="Raktár törlése" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center"></Button>
+            <Button x:Name="DeleteRak_BTN" Content="Raktár törlése" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" Click="DeleteRak_BTN_Click"></Button>
         </StackPanel>
         
         

@@ -27,8 +27,12 @@ namespace Raktarkezelo
 
         public string Mode { get; set; }
 
+        public int szam { get; set; }
 
-        public RaktarDataWindow(ProdData product, ObservableCollection<ProdData> allproducts, string mode)
+        public RaktarData SelectedRaktar { get; set; }
+
+
+        public RaktarDataWindow(ProdData product, ObservableCollection<ProdData> allproducts, string mode, RaktarData selectedraktar)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -38,8 +42,9 @@ namespace Raktarkezelo
             {
                 cikkszam_TXB.IsEnabled = true;
             }
-
             this.Mode = mode;
+            this.SelectedRaktar = selectedraktar;
+            this.szam = Product.darabszam;
         }
 
         private void cancel_BTN_Click(object sender, RoutedEventArgs e)
@@ -50,29 +55,29 @@ namespace Raktarkezelo
 
         private void save_BTN_Click(object sender, RoutedEventArgs e)
         {
-            if(this.Product.nev != "" && this.Product.darabszam > 0 && this.Product.darabszam < 801 && this.Product.cikkszam != "")
+            if(Product.nev != "" && Product.darabszam > 0 && Product.darabszam < 801 && Product.cikkszam != "")
             {
                 int x = 0;
-                int y = 0;
-                foreach(ProdData prod in this.allProducts)
+                if (Product.darabszam + SelectedRaktar.termek - szam < SelectedRaktar.kapacitas)
                 {
-                    if (this.Product.cikkszam == prod.cikkszam && this.Product.nev != prod.nev && Mode == "new") 
+                    foreach (ProdData prod in allProducts)
                     {
-                        MessageBox.Show($"Már megtalálható egy ilyen cikkszámű termék az adatok között!({prod.nev})", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-                        x++;
+                        if (Product.cikkszam == prod.cikkszam && Mode == "new")
+                        {
+                            MessageBox.Show($"Már megtalálható egy ilyen cikkszámű termék az adatok között!({prod.nev})", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                            x++;
+                        }
                     }
-                    else if (this.Product.cikkszam == prod.cikkszam && this.Product.nev == prod.nev && Mode == "new")
+                    if (x == 0)
                     {
-
-                        prod.darabszam += this.Product.darabszam;
-                        y++;
+                        this.DialogResult = true;
                         this.Close();
+                        SelectedRaktar.termek += Product.darabszam - szam;
                     }
                 }
-                if (x == 0 && y == 0)
+                else
                 {
-                    this.DialogResult = true;
-                    this.Close();
+                    MessageBox.Show($"Nincs elég hely a raktárban!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else

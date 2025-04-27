@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,7 +25,14 @@ namespace Raktarkezelo
     {
         public ProdData Product { get; set; }
 
+        public ObservableCollection<ProdData> ProductList = new ObservableCollection<ProdData>();
+
+        public ObservableCollection<ProdData> allProducts;
+
         public ObservableCollection<RaktarData> Raktarak { get; set; }
+
+        public string LogedUsername = "";
+
 
         public ObservableCollection<string> raktarak = new ObservableCollection<string>();
 
@@ -33,7 +42,19 @@ namespace Raktarkezelo
             set { raktarak = value; OnPropertyChanged(nameof(raktaraktoshow)); }
         }
 
-        RaktarData RaktarData = new RaktarData();
+        RaktarData RaktarData { get; set; }
+
+        RaktarData DestinationRaktarData { get; set; }
+
+        public ObservableCollection<ProdStatData> ShippedProducts = new ObservableCollection<ProdStatData>();
+
+        int mennyiseg = 0;
+
+        public int Mennyiseg
+        {
+            get { return mennyiseg; }
+            set { mennyiseg = value; OnPropertyChanged(nameof(Mennyiseg)); }
+        }
 
         public string Raktar { get; set; }
 
@@ -42,15 +63,24 @@ namespace Raktarkezelo
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(tulajdonsagNev));
         }
-        public ProductShippingWindow(ProdData data,ObservableCollection<RaktarData> raktarak)
+        public ProductShippingWindow(ProdData data,ObservableCollection<RaktarData> raktarak, ObservableCollection<ProdData> productList, string logedUsername, ObservableCollection<ProdData> allproducts)
         {
             InitializeComponent();
             this.DataContext = this;
             this.Product = data;
             this.Raktarak = raktarak;
+            this.ProductList = productList;
+            this.LogedUsername = logedUsername;
             CBXFill();
+            FileRead();
+            this.allProducts = allproducts;
         }
 
+        private void FileRead()
+        {
+            string jsonStr = File.ReadAllText("ProductsStatusData.json");
+            ShippedProducts = JsonSerializer.Deserialize<ObservableCollection<ProdStatData>>(jsonStr)!;
+        }
         public void CBXFill()
         {
             foreach (var raktar in Raktarak)
@@ -66,20 +96,80 @@ namespace Raktarkezelo
 
         private void MAX_Button_Click(object sender, RoutedEventArgs e)
         {
-            max_TXB.Text = this.Product.darabszam.ToString();
+            max_TXB.Text = Product.darabszam.ToString();
         }
 
         private void save_BTN_Click(object sender, RoutedEventArgs e)
         {
             if (Raktar != null)
             {
+                foreach(var raktar in Raktarak)
+                {
+                    if (raktar.nev == Raktar)
+                    {
+                        DestinationRaktarData = raktar;
+                    }
+                }
+                if (Mennyiseg > 0)
+                {
+                    if (DestinationRaktarData.termek + Mennyiseg < DestinationRaktarData.kapacitas)
+                    {
+                        if (Product.darabszam - Mennyiseg == 0)
+                        {
+                            ProductList.Remove(Product);
+                            allProducts.Remove(Product);
+                        }
+                        else
+                        {
+                            foreach (var product in ProductList)
+                            {
+                                if (product == Product)
+                                {
+                                    product.darabszam -= Mennyiseg;
+                                }
+                            }
+                        }
+                        foreach (var raktar in Raktarak)
+                        {
+                            if (raktar.nev == Product.raktar)
+                            {
+                                raktar.termek -= Mennyiseg;
+                            }
+                            else if (raktar.nev == Raktar)
+                            {
+                                raktar.termek += Mennyiseg;
+                            }
+                        }
+                        ProdStatData termek = new ProdStatData()
+                        {
+                            nev = Product.nev,
+                            cikkszam = Product.cikkszam,
+                            darabszam = Mennyiseg,
+                            honnan = Product.raktar,
+                            hova = Raktar,
+                            user = LogedUsername
+                        };
+                        ShippedProducts.Add(termek);
+                        string jsonStr = JsonSerializer.Serialize(ShippedProducts);
+                        File.WriteAllText("ProductsStatusData.json", jsonStr);
+                        this.DialogResult = true;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Nincs elég üres hely a(z) {DestinationRaktarData.nev} raktárban", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Adja meg mennyi termék legyen átszállítva!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
 
             }
             else
             {
                 MessageBox.Show("Nincs kiválasztva raktár!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            this.DialogResult = true;
         }
 
         private void cancel_BTN_Click(object sender, RoutedEventArgs e)

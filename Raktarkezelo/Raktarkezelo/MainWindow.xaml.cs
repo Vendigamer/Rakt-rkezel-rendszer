@@ -33,6 +33,10 @@ namespace Raktarkezelo
 
         public ObservableCollection<RaktarData> RaktarakList = new ObservableCollection<RaktarData>();
 
+        public ObservableCollection<ProdStatData> ShippedProducts = new ObservableCollection<ProdStatData>();
+
+        public ObservableCollection<ProdStatData> AlreadyShippedProducts = new ObservableCollection<ProdStatData>();
+
         private ObservableCollection<string> usersRaktarak;
         public ObservableCollection<string> UsersRaktarak
         {
@@ -60,6 +64,7 @@ namespace Raktarkezelo
             InitializeComponent();
             this.DataContext = this;
             FileRead();
+            ShippedProductHandler();
             Raktarak = new(RaktarakList.Select(x => x.nev).Distinct().Order());
             Raktarak.Insert(0, "");
             LoginWindow loginWindow = new LoginWindow();
@@ -92,6 +97,8 @@ namespace Raktarkezelo
             FilteredProducts = JsonSerializer.Deserialize<ObservableCollection<ProdData>>(jsonStr)!;
             string jsonStr2 = File.ReadAllText("RaktarData.json");
             RaktarakList = JsonSerializer.Deserialize<ObservableCollection<RaktarData>>(jsonStr2)!;
+            string jsonStr3 = File.ReadAllText("AlreadyShippedProducts.json");
+            AlreadyShippedProducts = JsonSerializer.Deserialize<ObservableCollection<ProdStatData>>(jsonStr3)!;
         }
 
         private void mainLogin_BTN_Click(object sender, RoutedEventArgs e)
@@ -112,10 +119,11 @@ namespace Raktarkezelo
                 if (raktarLoginWindow.DialogResult == true)
                 {
                     raktarProducts = new(Products.Where(x => x.raktar.ToLower().StartsWith(RaktarName.ToLower())));
-                    RaktarWindow raktarwindow = new RaktarWindow(raktarProducts, RaktarakList);
+                    RaktarWindow raktarwindow = new RaktarWindow(raktarProducts, RaktarakList, Products, LogedUsername);
                     raktarwindow.ShowDialog();
                     if (raktarwindow.CustomDialogResult == true)
                     {
+                        Products = raktarwindow.ProductsList;
                         foreach (var product in raktarwindow.AllProducts)
                         {
                             foreach (var Product in Products)
@@ -129,10 +137,22 @@ namespace Raktarkezelo
                                 }
                             }
                         }
+                        RaktarakList = raktarwindow.Raktarak;
                         filter_BTN_Click(sender, e);
                     }
                     if (raktarwindow.DialogResult == true)
                     {
+                        Products = raktarwindow.ProductsList;
+                        RaktarData raktardata = new RaktarData();
+                        foreach(var raktar in RaktarakList) 
+                        {
+                            if (raktar.nev == RaktarName)
+                            {
+                                raktardata = raktar;
+                            }
+                        }
+                        RaktarakList.Remove(raktardata);
+                        Raktarak.Remove(RaktarName);
                         filter_BTN_Click(sender, e);
                     }
                 }
@@ -198,10 +218,36 @@ namespace Raktarkezelo
             deliveryLogWindow.ShowDialog();
         }
 
+        private void ShippedProductHandler()
+        {
+            string jsonStr = File.ReadAllText("ProductsStatusData.json");
+            ShippedProducts = JsonSerializer.Deserialize<ObservableCollection<ProdStatData>>(jsonStr);
+            foreach (var item in ShippedProducts)
+            {
+                if (!AlreadyShippedProducts.Contains(item) && item.statusz == "Kiszállítva")
+                {
+                    ProdData prodData = new ProdData()
+                    {
+                        nev = item.nev,
+                        raktar = item.hova,
+                        cikkszam = item.cikkszam,
+                        darabszam = item.darabszam,
+
+                    };
+                    Products.Add(prodData);
+                    AlreadyShippedProducts.Add(item);
+                }
+            }
+        }
+
         private void Window_Closed(object sender, EventArgs e)
         {
             string jsonStr = JsonSerializer.Serialize(RaktarakList);
             File.WriteAllText("RaktarData.json", jsonStr);
+            string jsonStr2 = JsonSerializer.Serialize(AlreadyShippedProducts);
+            File.WriteAllText("AlreadyShippedProducts.json", jsonStr2);
+            string jsonStr3 = JsonSerializer.Serialize(Products);
+            File.WriteAllText("ProductData.json", jsonStr3);
         }
     }
 }

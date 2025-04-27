@@ -8,6 +8,7 @@ namespace Raktarkezelo
 {
     public class ProdStatData
     {
+        public string nev { get; set; }
         public string cikkszam { get; set; }
         public int darabszam { get; set; }
         public string honnan { get; set; }
