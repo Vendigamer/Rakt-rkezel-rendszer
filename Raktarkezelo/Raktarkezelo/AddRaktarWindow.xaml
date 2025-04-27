@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Raktarkezelo"
         mc:Ignorable="d"
-        Title="Új raktár létrehozása" Height="350" Width="280" FontSize="18" Background="Gray">
+        Title="Új raktár létrehozása" Height="380" Width="280" FontSize="18" Background="Gray">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.9*"></RowDefinition>
@@ -32,7 +32,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Termék(ek):"></Label>
-            <TextBox Text="{Binding FileLocation}" Width="230" IsReadOnly="True" Margin="0,0,0,10" FontSize="16"/>
+            <TextBox Text="{Binding FileLocation}" Foreground="Gray" Width="230" IsReadOnly="True" Margin="0,0,0,10" FontSize="16"/>
             <Button Content="Fájl kiválasztása" Width="150" Click="SelectFile_Click" Height="30"/>
         </StackPanel>
         <StackPanel Grid.Row="3">

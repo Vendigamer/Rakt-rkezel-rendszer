@@ -21,7 +21,7 @@ namespace Raktarkezelo
     /// <summary>
     /// Interaction logic for ProductShippingWindow.xaml
     /// </summary>
-    public partial class ProductShippingWindow : Window
+    public partial class ProductShippingWindow : Window, INotifyPropertyChanged
     {
         public ProdData Product { get; set; }
 
@@ -48,12 +48,14 @@ namespace Raktarkezelo
 
         public ObservableCollection<ProdStatData> ShippedProducts = new ObservableCollection<ProdStatData>();
 
-        int mennyiseg = 0;
+        public int mennyiseg = 0;
 
-        public int Mennyiseg
+        public string mennyisegstring = "";
+
+        public string Mennyiseg
         {
-            get { return mennyiseg; }
-            set { mennyiseg = value; OnPropertyChanged(nameof(Mennyiseg)); }
+            get { return mennyisegstring; }
+            set { mennyisegstring = value; OnPropertyChanged(nameof(Mennyiseg)); }
         }
 
         public string Raktar { get; set; }
@@ -96,7 +98,8 @@ namespace Raktarkezelo
 
         private void MAX_Button_Click(object sender, RoutedEventArgs e)
         {
-            max_TXB.Text = Product.darabszam.ToString();
+            mennyiseg = Product.darabszam;
+            Mennyiseg = mennyiseg.ToString();
         }
 
         private void save_BTN_Click(object sender, RoutedEventArgs e)
@@ -110,11 +113,11 @@ namespace Raktarkezelo
                         DestinationRaktarData = raktar;
                     }
                 }
-                if (Mennyiseg > 0)
+                if (mennyiseg > 0)
                 {
-                    if (DestinationRaktarData.termek + Mennyiseg < DestinationRaktarData.kapacitas)
+                    if (DestinationRaktarData.termek + mennyiseg < DestinationRaktarData.kapacitas)
                     {
-                        if (Product.darabszam - Mennyiseg == 0)
+                        if (Product.darabszam - mennyiseg == 0)
                         {
                             ProductList.Remove(Product);
                             allProducts.Remove(Product);
@@ -125,7 +128,7 @@ namespace Raktarkezelo
                             {
                                 if (product == Product)
                                 {
-                                    product.darabszam -= Mennyiseg;
+                                    product.darabszam -= mennyiseg;
                                 }
                             }
                         }
@@ -133,18 +136,18 @@ namespace Raktarkezelo
                         {
                             if (raktar.nev == Product.raktar)
                             {
-                                raktar.termek -= Mennyiseg;
+                                raktar.termek -= mennyiseg;
                             }
                             else if (raktar.nev == Raktar)
                             {
-                                raktar.termek += Mennyiseg;
+                                raktar.termek += mennyiseg;
                             }
                         }
                         ProdStatData termek = new ProdStatData()
                         {
                             nev = Product.nev,
                             cikkszam = Product.cikkszam,
-                            darabszam = Mennyiseg,
+                            darabszam = mennyiseg,
                             honnan = Product.raktar,
                             hova = Raktar,
                             user = LogedUsername

@@ -154,7 +154,6 @@ namespace Raktarkezelo
                         }
                         RaktarakList.Remove(raktardata);
                         Raktarak.Remove(RaktarName);
-                        filter_BTN_Click(sender, e);
                     }
                 }
             }

@@ -24,23 +24,18 @@ namespace Raktarkezelo
         public ObservableCollection<ProdData> allProducts;
 
         public ObservableCollection<ProdData> ProductsList;
-
         public ObservableCollection<RaktarData> Raktarak { get; set; }
 
         public RaktarData SelectedRaktar = new RaktarData();
-
         public RaktarData SelectedRaktarToShow
         {
             get { return SelectedRaktar; }
             set { SelectedRaktar = value; OnPropertyChanged(nameof(SelectedRaktarToShow)); }
         }
-
         public ProdData SelectedItem { get; set; }
 
         public bool issomethingselected = new bool();
-
         public bool IsOwner { get; set; }
-
         public bool IsSomethingSelected
         {
             get { return issomethingselected; }
@@ -69,7 +64,7 @@ namespace Raktarkezelo
             this.DataContext = this;
             this.allProducts = products;
             this.Raktarak = raktarak;
-            ProductsList = productsList;
+            this.ProductsList = productsList;
             this.ProductsList = productsList;
             this.LogedUsername = logedUsername;
             this.IsOwner = isowner;
@@ -120,7 +115,6 @@ namespace Raktarkezelo
                     AllProducts[index] = raktarDataWindow.Product;
                     this.CustomDialogResult = true;
                     SelectedRaktarToShow = raktarDataWindow.SelectedRaktar;
-                    RaktarSelect();
                 }
             }
         }
@@ -150,12 +144,11 @@ namespace Raktarkezelo
             if (result == MessageBoxResult.Yes)
             {
                 SelectedRaktarToShow.termek -= SelectedItem.darabszam;
+                ProductsList.Remove(SelectedItem);
                 AllProducts.Remove(SelectedItem);
                 this.CustomDialogResult = true;
                 RaktarSelect();
             }
-            return;
-
         }
 
         private void Trans_BTN_Click(object sender, RoutedEventArgs e)

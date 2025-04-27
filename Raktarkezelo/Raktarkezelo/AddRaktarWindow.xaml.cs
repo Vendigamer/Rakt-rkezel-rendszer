@@ -37,7 +37,7 @@ namespace Raktarkezelo
         }
         public int Meret { get; set; }
         public string RaktarName { get; set; }
-        private string fileLocation;
+        private string fileLocation = "nem kötelező";
         public string FileLocation
         {
             get { return fileLocation; }
@@ -55,7 +55,7 @@ namespace Raktarkezelo
             this.DataContext = this;
             this.Products = products;
             this.Raktarak = raktarak;
-            for (int i = 0; i < 11; i++)
+            for (int i = 1; i < 11; i++)
             {
                 this.sor.Add(i.ToString());
             }
